@@ -21,4 +21,9 @@
     <color name="price_red">#ff5339</color>
     <color name="account_selected_color">#BDBDBD</color>
     <color name="type_gray">#f8f8f8</color>
+    <color name="almond_white">#ffffcd</color>
+    <color name="honeydew_orange">#f0fff0</color>
+    <color name="emerald">#00c957</color>
+    <color name="grizzled">#fffaf0</color>
+    <color name="smoky_black">#100c08</color>
 </resources>

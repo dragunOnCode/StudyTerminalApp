@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@color/grizzled"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".activity.EditStudentProfileActivity">
+
+    <TextView
+        android:id="@+id/tv_edit_student1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="编辑个人资料"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_edit_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_student1"
+        android:layout_marginTop="20dp"
+        android:text="用户名："
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_edit_student3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_username"
+        android:layout_marginTop="10dp"
+        android:text="学生姓名："
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_edit_student_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_username"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/tv_edit_student3"
+        android:text="张三"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_edit_student4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_student3"
+        android:layout_marginTop="15dp"
+        android:text="邮箱："
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_edit_student_name"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/tv_edit_student4"
+        android:text="123@qq.com"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_edit_student5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_student4"
+        android:layout_marginTop="15dp"
+        android:text="学校："
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_edit_school"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_edit_email"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/tv_edit_student5"
+        android:text="红星小学"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_edit_student6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_edit_student5"
+        android:layout_marginTop="15dp"
+        android:text="学号："
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_edit_student_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_edit_school"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/tv_edit_student6"
+        android:text="123@qq.com"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_cancel_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_edit_student_number"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/item_bg_selector"
+        android:text="取消修改"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_commit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_edit_student_number"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_bg_selector"
+        android:text="提交修改"
+        android:textSize="20sp" />
+
+</RelativeLayout>
