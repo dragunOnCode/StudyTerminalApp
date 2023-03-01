@@ -6,12 +6,13 @@ import android.os.Bundle;
 
 import com.example.studyterminalapp.R;
 
-
-public class StudentOrderActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_order);
+        setContentView(R.layout.activity_splash);
+        // todo: https://blog.csdn.net/lb1207087645/article/details/52900657/
+
     }
 }

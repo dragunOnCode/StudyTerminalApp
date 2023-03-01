@@ -1,4 +1,4 @@
-package com.example.studyterminalapp.activity;
+package com.example.studyterminalapp.activity.student;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +31,7 @@ public class StudentProfileActivity extends AppCompatActivity {
     private StudentBean student;
     private RelativeLayout rlTitleBar;
     private ImageView ivBack;
-    private Button btnHomePage, btnEditProfile;
+    private Button btnHomePage, btnEditProfile, btnMyOrder, btnEditAddress;
     private TextView tvTitle, tvStudentName, tvUsername, tvEmail, tvStudentNumber, tvSchool;
     private ImageView ivProfilePic;
 
@@ -62,6 +62,8 @@ public class StudentProfileActivity extends AppCompatActivity {
 
         btnHomePage = findViewById(R.id.btn_home_page);
         btnEditProfile = findViewById(R.id.btn_edit_profile);
+        btnMyOrder = findViewById(R.id.btn_my_order);
+        btnEditAddress = findViewById(R.id.btn_edit_address);
 
         tvTitle.setText("我的");
 
@@ -81,6 +83,26 @@ public class StudentProfileActivity extends AppCompatActivity {
                 Log.i("Profile", this.getClass().toString() + "跳转到EditProfile");
                 Intent intent = new Intent(StudentProfileActivity.this, EditStudentProfileActivity.class);
                 intent.putExtra("student", student);
+                StudentProfileActivity.this.startActivity(intent);
+            }
+        });
+
+        btnMyOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("Profile", this.getClass().toString() + "MyOrder");
+                Intent intent = new Intent(StudentProfileActivity.this, StudentOrderActivity.class);
+                // 可以用putExtra传递用户id
+                // intent.putExtra("student", student);
+                StudentProfileActivity.this.startActivity(intent);
+            }
+        });
+
+        btnEditAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudentProfileActivity.this, StudentContactActivity.class);
+                //intent.putExtra("student", student);
                 StudentProfileActivity.this.startActivity(intent);
             }
         });

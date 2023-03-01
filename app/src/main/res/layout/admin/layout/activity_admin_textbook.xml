@@ -4,28 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.StudentHomeActivity">
+    tools:context=".activity.admin.AdminTextbookActivity">
 
     <include layout="@layout/title_bar" />
 
-    <ImageView
-        android:id="@+id/iv_banner"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+    <com.xuexiang.xui.widget.button.RippleView
+        android:id="@+id/btn_add_textbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/book_pic" />
+        android:layout_marginTop="70dp"
+        app:rv_type="simpleRipple">
 
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/emerald"
+            android:gravity="center"
+            android:text="新增教辅"
+            android:textColor="@color/xui_config_color_white"
+            android:textSize="20sp" />
+
+    </com.xuexiang.xui.widget.button.RippleView>
 
     <RelativeLayout
-        android:id="@+id/rl_main_search"
+        android:id="@+id/rl_textbook_search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_banner"
+        android:layout_below="@id/btn_add_textbook"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="30dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -56,43 +65,11 @@
             app:rb_backgroundColor="@color/blue_color" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_my_course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_main_search"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="10dp"
-        android:text="我的课程"
-        android:textSize="20sp"></TextView>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_my_course"
-        android:layout_marginBottom="65dp"
-        android:background="#fcf0c0"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.example.studyterminalapp.views.ClassListView
-                android:id="@+id/clv_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:background="@color/black"
-                android:dividerHeight="8dp"
-                android:scrollbars="none" />
-        </LinearLayout>
+        android:layout_height="wrap_content">
     </ScrollView>
 
-    <include android:id="@+id/bottom_bar" layout="@layout/bottom_bar" />
+
 
 </RelativeLayout>

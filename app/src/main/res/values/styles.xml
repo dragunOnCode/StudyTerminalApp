@@ -31,4 +31,14 @@
         <item name="android:windowIsFloating">true</item> <!--浮在Activity之上-->
     </style>
 
+    <style name="Theme.ActivityDialogStyle2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>   <!--设置对话框背景为透明-->
+        <!--设置对话框背景有半透明遮障层-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowContentOverlay">@null</item> <!--设置窗体内容背景-->
+        <!--点击对话框外的部分关闭该界面-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsFloating">true</item> <!--浮在Activity之上-->
+    </style>
+
 </resources>

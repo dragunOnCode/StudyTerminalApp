@@ -1,4 +1,4 @@
-package com.example.studyterminalapp.adapter;
+package com.example.studyterminalapp.adapter.student;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.studyterminalapp.R;
-import com.example.studyterminalapp.activity.ClassDetailActivity;
+import com.example.studyterminalapp.activity.student.ClassDetailActivity;
 import com.example.studyterminalapp.bean.HomeClassBean;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.studyterminalapp.activity;
+package com.example.studyterminalapp.activity.student;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 
 import com.example.studyterminalapp.R;
-import com.example.studyterminalapp.adapter.StudentHomeAdapter;
+import com.example.studyterminalapp.adapter.student.StudentHomeAdapter;
 import com.example.studyterminalapp.bean.HomeClassBean;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;

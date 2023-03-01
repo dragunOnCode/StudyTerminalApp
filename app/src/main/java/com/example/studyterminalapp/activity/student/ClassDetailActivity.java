@@ -1,4 +1,4 @@
-package com.example.studyterminalapp.activity;
+package com.example.studyterminalapp.activity.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 

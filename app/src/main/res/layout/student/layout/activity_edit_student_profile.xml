@@ -7,7 +7,7 @@
     android:background="@color/grizzled"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".activity.EditStudentProfileActivity">
+    tools:context=".activity.student.EditStudentProfileActivity">
 
     <TextView
         android:id="@+id/tv_edit_student1"

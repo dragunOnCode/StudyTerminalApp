@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/order_item_bg_selector"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/tv_contact_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="李子明"
+        android:textColor="@color/smoky_black"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_contact_telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_contact_receiver"
+        android:text="18238190721" />
+
+    <TextView
+        android:id="@+id/tv_contact_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_contact_receiver"
+        android:layout_margin="8dp"
+        android:text="广东省广州市番禺区小谷围街道华南理工大学" />
+
+    <Button
+        android:id="@+id/btn_delete_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_contact_address"
+        android:layout_alignParentRight="true"
+        android:background="@color/orange"
+        android:text="删除地址"
+        android:textColor="@color/white"/>
+
+<!--    <com.xuexiang.xui.widget.button.RippleView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/tv_contact_address"-->
+<!--        android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"-->
+<!--        app:rv_type="simpleRipple">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"-->
+<!--            android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"-->
+<!--            android:background="@color/orange"-->
+<!--            android:gravity="center"-->
+<!--            android:text="单波纹"-->
+<!--            android:textColor="@color/blue_color"-->
+<!--            android:textSize="20sp" />-->
+
+<!--    </com.xuexiang.xui.widget.button.RippleView>-->
+
+</RelativeLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    tools:context=".activity.student.StudentOrderDetailActivity">
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_order_detail_name"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="阿瓦达"-->
+<!--        android:textColor="@color/smoky_black"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
+
+
+    <com.xuexiang.xui.widget.textview.MarqueeTextView
+        android:id="@+id/tv_order_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/smoky_black"
+        app:mtv_isAutoFit="true"
+        app:mtv_isAutoDisplay="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_order_detail_name"
+        android:layout_margin="8dp"
+        android:background="@color/color_gray" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="洛溪" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/tv_order_detail_receiver"
+        android:text="15609216718" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_receiver"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="广东省广州市番禺区小谷围街道华南理工大学" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_order_detail_address"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/color_gray" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_const1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_address"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="订单编号：" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_seq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_address"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/tv_order_detail_const1"
+        android:text="1919191919" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_const2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_const1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="订单状态：" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_seq"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_order_detail_const1"
+        android:text="已完成" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_const3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_const2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="下单时间：" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_status"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_order_detail_const3"
+        android:text="2022-01-03" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_const4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_const3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="下单方式：" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_const4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="￥100"
+        android:textColor="@color/price_red"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_order_detail_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_date"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_order_detail_const4"
+        android:text="--" />
+
+    <Button
+        android:id="@+id/btn_feedback_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_price"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/item_bg_selector"
+        android:text="订单反馈"
+        android:textColor="@color/smoky_black" />
+
+    <Button
+        android:id="@+id/btn_delete_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_detail_price"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/btn_feedback_order"
+        android:background="@drawable/item_bg_selector"
+        android:text="删除订单"
+        android:textColor="@color/price_red" />
+
+
+</RelativeLayout>

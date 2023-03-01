@@ -29,6 +29,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layout/student',
+                    'src/main/res/layout/teacher',
+                    'src/main/res/layout/admin',
+                    'src/main/res/layout',
+                    'src/main/res'
+            ]
+        }
+    }
 }
 
 

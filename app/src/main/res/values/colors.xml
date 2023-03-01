@@ -26,4 +26,9 @@
     <color name="emerald">#00c957</color>
     <color name="grizzled">#fffaf0</color>
     <color name="smoky_black">#100c08</color>
+    <color name="incarnadine">#ff7d40</color>
+    <color name="navajo_white">#ffdead</color>
+    <color name="eggshell">#fce6c9</color>
+    <color name="buff">#a39480</color>
+    <color name="orange">#ff6100</color>
 </resources>

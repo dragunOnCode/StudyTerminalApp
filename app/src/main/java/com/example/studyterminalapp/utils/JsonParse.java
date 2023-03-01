@@ -1,6 +1,8 @@
 package com.example.studyterminalapp.utils;
 
+import com.example.studyterminalapp.bean.ContactBean;
 import com.example.studyterminalapp.bean.HomeClassBean;
+import com.example.studyterminalapp.bean.OrderBean;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,6 +35,16 @@ public class JsonParse {
 
     public StudentBean getStudent(String json) {
         Type listType = new TypeToken<StudentBean>(){}.getType();
+        return new Gson().fromJson(json, listType);
+    }
+
+    public List<OrderBean> getOrderList(String json) {
+        Type listType = new TypeToken<List<OrderBean>>(){}.getType();
+        return new Gson().fromJson(json, listType);
+    }
+
+    public List<ContactBean> getContactList(String json) {
+        Type listType = new TypeToken<List<ContactBean>>(){}.getType();
         return new Gson().fromJson(json, listType);
     }
 }
