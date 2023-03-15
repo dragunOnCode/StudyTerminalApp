@@ -14,16 +14,24 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
+import com.example.studyterminalapp.MyApp;
 import com.example.studyterminalapp.R;
 import com.example.studyterminalapp.adapter.student.StudentHomeAdapter;
 import com.example.studyterminalapp.bean.HomeClassBean;
+import com.example.studyterminalapp.bean.Result;
+import com.example.studyterminalapp.bean.SaTokenInfo;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
+import com.example.studyterminalapp.utils.RequestManager;
 import com.example.studyterminalapp.views.ClassListView;
+import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
@@ -43,15 +51,20 @@ public class StudentHomeActivity extends AppCompatActivity implements View.OnCli
     private StudentHomeAdapter studentHomeAdapter;
     private ClassListView clvList;
     private Button btnProfile;
+    private int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
 
+        // uid = getIntent().getIntExtra("id", 6);
+        uid = MyApp.getId();
+
         initView();
         initData();
     }
+
 
     private void initView() {
         rlTitleBar = findViewById(R.id.title_bar);
@@ -77,35 +90,67 @@ public class StudentHomeActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View view) {
                 //Log.i("Home", this.getClass().toString() + "跳转到Profile");
                 Intent intent = new Intent(StudentHomeActivity.this, StudentProfileActivity.class);
-                intent.putExtra("student", 1);
+                intent.putExtra("id", uid);
                 StudentHomeActivity.this.startActivity(intent);
             }
         });
     }
 
     private void initData() {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.REQUEST_HOME_CLASS_DATA).build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+        HashMap<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("pageSize", 1000);
+        paramsMap.put("pageNum", 1);
+        paramsMap.put("uid", uid);
+        try {
+            RequestManager.getInstance().GetRequest(paramsMap, Constants.USER_CLASS_LIST, new RequestManager.ResultCallback() {
+                @Override
+                public void onResponse(String code, String json) {
 
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String json = response.body().string();
-                Log.d("TEST", "JSON: " + json);
-                final List<HomeClassBean> homeClassList = JsonParse.getInstance().getHomeList(json);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        studentHomeAdapter.setData(homeClassList);
+                    //Log.d("TEST", "JSON: " + json);
+                    Type dataType = new TypeToken<Result<List<HomeClassBean>>>(){}.getType();
+                    Result<List<HomeClassBean>> result = JsonParse.getInstance().getResult(json, dataType);
+                    List<HomeClassBean> data = result.getData();
+                    if (data == null || data.isEmpty()) {
+                        return;
                     }
-                });
-            }
-        });
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            studentHomeAdapter.setData(data);
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(String msg) {
+                    Log.i("Home Page Error", msg);
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.USER_CLASS_LIST).build();
+//        Call call = client.newCall(request);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                String json = response.body().string();
+//                Log.d("TEST", "JSON: " + json);
+//                final List<HomeClassBean> homeClassList = JsonParse.getInstance().getHomeList(json);
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        studentHomeAdapter.setData(homeClassList);
+//                    }
+//                });
+//            }
+//        });
     }
 
 
@@ -118,12 +163,6 @@ public class StudentHomeActivity extends AppCompatActivity implements View.OnCli
                 Toast.makeText(this, "搜索了 "+type+","+content, Toast.LENGTH_SHORT).show();
                 break;
         }
-//        new MaterialDialog.Builder(this)
-//                .iconRes(R.drawable.iv_back)
-//                .title("什么")
-//                .content("你说什么")
-//                .positiveText("好")
-//                .show();
     }
 
 }

@@ -13,12 +13,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.studyterminalapp.MyApp;
 import com.example.studyterminalapp.R;
+import com.example.studyterminalapp.bean.HomeClassBean;
+import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
+import com.example.studyterminalapp.utils.RequestManager;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -34,11 +43,15 @@ public class StudentProfileActivity extends AppCompatActivity {
     private Button btnHomePage, btnEditProfile, btnMyOrder, btnEditAddress;
     private TextView tvTitle, tvStudentName, tvUsername, tvEmail, tvStudentNumber, tvSchool;
     private ImageView ivProfilePic;
+    private int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
+
+        // uid = getIntent().getIntExtra("id", 6);
+        uid = MyApp.getId();
 
         initView();
         initData();
@@ -83,6 +96,7 @@ public class StudentProfileActivity extends AppCompatActivity {
                 Log.i("Profile", this.getClass().toString() + "跳转到EditProfile");
                 Intent intent = new Intent(StudentProfileActivity.this, EditStudentProfileActivity.class);
                 intent.putExtra("student", student);
+                intent.putExtra("id", uid);
                 StudentProfileActivity.this.startActivity(intent);
             }
         });
@@ -109,35 +123,71 @@ public class StudentProfileActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.REQUEST_STUDENT_DATA).build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
-            }
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String json = response.body().string();
-                //Log.d("TEST", "JSON: " + json);
-                student = JsonParse.getInstance().getStudent(json);
-                if (student != null) {
-                    runOnUiThread(new Runnable() {
+        HashMap<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("uid", uid);
+        try {
+            RequestManager.getInstance().GetRequest(paramsMap, Constants.USER_PROFILE, new RequestManager.ResultCallback() {
                         @Override
-                        public void run() {
-                            tvStudentName.setText(student.getStudentName());
-                            tvUsername.setText(student.getUsername());
-                            tvEmail.setText(student.getEmail());
-                            tvStudentNumber.setText(student.getStudentNumber());
-                            tvSchool.setText(student.getSchool());
-                            Glide.with(StudentProfileActivity.this).load(student.getProfilePicUrl())
-                                    .error(R.mipmap.ic_launcher)
-                                    .into(ivProfilePic);
+                        public void onResponse(String code, String json) {
+                            //Log.d("TEST", "JSON: " + json);
+                            Type dataType = new TypeToken<Result<StudentBean>>(){}.getType();
+                            Result<StudentBean> result = JsonParse.getInstance().getResult(json, dataType);
+                            student = result.getData();
+                            Log.i("Profile", student.toString());
+                            if (student != null) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tvStudentName.setText(student.getNickname());
+                                        tvUsername.setText(student.getUsername());
+                                        tvEmail.setText(student.getEmail());
+                                        tvStudentNumber.setText(student.getStudentNumber());
+                                        tvSchool.setText(student.getSchool());
+                                        Glide.with(StudentProfileActivity.this).load(student.getProfileImg())
+                                                .error(R.mipmap.ic_launcher)
+                                                .into(ivProfilePic);
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onError(String msg) {
+                            Log.e("Student Profile Error", msg);
                         }
                     });
-                }
-            }
-        });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.REQUEST_STUDENT_DATA).build();
+//        Call call = client.newCall(request);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//
+//            }
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                String json = response.body().string();
+//                //Log.d("TEST", "JSON: " + json);
+//                student = JsonParse.getInstance().getStudent(json);
+//                if (student != null) {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            tvStudentName.setText(student.getNickname());
+//                            tvUsername.setText(student.getUsername());
+//                            tvEmail.setText(student.getEmail());
+//                            tvStudentNumber.setText(student.getStudentNumber());
+//                            tvSchool.setText(student.getSchool());
+//                            Glide.with(StudentProfileActivity.this).load(student.getProfileImg())
+//                                    .error(R.mipmap.ic_launcher)
+//                                    .into(ivProfilePic);
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }
 }

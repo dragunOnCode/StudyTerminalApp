@@ -3,6 +3,8 @@ package com.example.studyterminalapp.utils;
 import com.example.studyterminalapp.bean.ContactBean;
 import com.example.studyterminalapp.bean.HomeClassBean;
 import com.example.studyterminalapp.bean.OrderBean;
+import com.example.studyterminalapp.bean.Result;
+import com.example.studyterminalapp.bean.SaTokenInfo;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,5 +48,9 @@ public class JsonParse {
     public List<ContactBean> getContactList(String json) {
         Type listType = new TypeToken<List<ContactBean>>(){}.getType();
         return new Gson().fromJson(json, listType);
+    }
+
+    public <T> Result<T> getResult(String json, Type dataType) {
+        return new Gson().fromJson(json, dataType);
     }
 }

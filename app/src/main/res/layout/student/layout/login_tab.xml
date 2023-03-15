@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="350dp"
+    android:gravity="center">
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_login_constant"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="请选择你的身份" />-->
+
+    <RadioGroup
+        android:id="@+id/rg_login_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学生"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="教师"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="管理员"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/ll_edit"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/rg_login_role"
+        android:layout_marginTop="10dp">
+
+        <com.xuexiang.xui.widget.edittext.ClearEditText
+            android:id="@+id/et_login_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:hint="输入用户名"
+            android:layout_margin="5dp" />
+
+        <com.xuexiang.xui.widget.edittext.PasswordEditText
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:hint="输入密码"
+            android:inputType="textPassword"
+            android:textAlignment="viewStart"
+            app:pet_enableIconAlpha="true"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_edit"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="登录"/>
+
+    <Button
+        android:id="@+id/btn_cookie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login"
+        android:layout_centerHorizontal="true"
+        android:text="查询cookies"/>
+
+</RelativeLayout>

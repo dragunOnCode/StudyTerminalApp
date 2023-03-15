@@ -2,6 +2,7 @@ package com.example.studyterminalapp.adapter.student;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,11 +69,12 @@ public class StudentHomeAdapter extends BaseAdapter {
         }
         HomeClassBean homeClassBean = (HomeClassBean) getItem(i);
         if (homeClassBean != null) {
+            Log.i("HomeClassBean", homeClassBean.toString());
             viewHolder.tvClassName.setText(homeClassBean.getClassName());
-            viewHolder.tvSubject.setText(homeClassBean.getSubject());
+            viewHolder.tvSubject.setText(homeClassBean.getCourseName());
             viewHolder.tvGrade.setText(homeClassBean.getGrade());
-            viewHolder.tvSchool.setText(homeClassBean.getSchool());
-            viewHolder.tvStudentNum.setText(homeClassBean.getStudentNum() + " 人已加入");
+            viewHolder.tvSchool.setText(homeClassBean.getSchoolName());
+            viewHolder.tvStudentNum.setText(homeClassBean.getOwner() + " 是任课老师");
             Glide.with(context)
                     .load(homeClassBean.getClassPic())
                     .error(R.mipmap.ic_launcher)

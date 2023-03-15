@@ -11,31 +11,27 @@ public class StudentBean implements Serializable {
 
     private static final long serialVersionUID = 1L; //序列化时保持ShopBean类版本的兼容性
 
+
+    @JsonProperty("uid")
+    private Integer uid;
     @JsonProperty("username")
     private String username;
-    @JsonProperty("className")
+    @JsonProperty("email")
     private String email;
-    @JsonProperty("studentName")
-    private String studentName;
+    @JsonProperty("nickname")
+    private String nickname;
+    @JsonProperty("gender")
+    private String gender;
     @JsonProperty("studentNumber")
     private String studentNumber;
     @JsonProperty("school")
     private String school;
-    @JsonProperty("profilePicUrl")
-    private String profilePicUrl;
+    @JsonProperty("profileImg")
+    private String profileImg;
 
     public StudentBean() {
     }
 
-    public StudentBean(String username, String email, String studentName, String studentNumber,
-                       String school, String profilePicUrl) {
-        this.username = username;
-        this.email = email;
-        this.studentName = studentName;
-        this.studentNumber = studentNumber;
-        this.school = school;
-        this.profilePicUrl = profilePicUrl;
-    }
 
     public String getUsername() {
         return username;
@@ -53,12 +49,12 @@ public class StudentBean implements Serializable {
         this.email = email;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getStudentNumber() {
@@ -77,23 +73,37 @@ public class StudentBean implements Serializable {
         this.school = school;
     }
 
-    public String getProfilePicUrl() {
-        return profilePicUrl;
+    public String getProfileImg() {
+        return profileImg;
     }
 
-    public void setProfilePicUrl(String profilePicUrl) {
-        this.profilePicUrl = profilePicUrl;
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
+    }
+
+    public StudentBean(Integer uid, String username, String email, String nickname, String gender,
+                       String studentNumber, String school, String profileImg) {
+        this.uid = uid;
+        this.username = username;
+        this.email = email;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.studentNumber = studentNumber;
+        this.school = school;
+        this.profileImg = profileImg;
     }
 
     @Override
     public String toString() {
         return "StudentBean{" +
-                "username='" + username + '\'' +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", studentNumber='" + studentNumber + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", studentNumber=" + studentNumber +
                 ", school='" + school + '\'' +
-                ", profilePicUrl='" + profilePicUrl + '\'' +
+                ", profileImg='" + profileImg + '\'' +
                 '}';
     }
 }

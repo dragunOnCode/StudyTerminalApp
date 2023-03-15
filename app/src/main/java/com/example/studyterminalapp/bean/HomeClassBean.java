@@ -3,8 +3,6 @@ package com.example.studyterminalapp.bean;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
 
 import lombok.Data;
 
@@ -13,18 +11,18 @@ public class HomeClassBean implements Serializable {
 
     private static final long serialVersionUID = 1L; //序列化时保持ShopBean类版本的兼容性
 
-    @JsonProperty("id")
-    private Integer id;
+    @JsonProperty("cid")
+    private Integer cid;
     @JsonProperty("className")
     private String className;
-    @JsonProperty("studentNum")
-    private Integer studentNum;
-    @JsonProperty("subject")
-    private String subject;
+    @JsonProperty("owner")
+    private Integer owner;
+    @JsonProperty("courseName")
+    private String courseName;
     @JsonProperty("grade")
     private String grade;
-    @JsonProperty("school")
-    private String school;
+    @JsonProperty("schoolName")
+    private String schoolName;
 
     public String getClassPic() {
         return classPic;
@@ -37,12 +35,12 @@ public class HomeClassBean implements Serializable {
     @JsonProperty("school")
     private String classPic;
 
-    public Integer getId() {
-        return id;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getClassName() {
@@ -53,20 +51,20 @@ public class HomeClassBean implements Serializable {
         this.className = className;
     }
 
-    public Integer getStudentNum() {
-        return studentNum;
+    public Integer getOwner() {
+        return owner;
     }
 
-    public void setStudentNum(Integer studentNum) {
-        this.studentNum = studentNum;
+    public void setOwner(Integer owner) {
+        this.owner = owner;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getGrade() {
@@ -77,24 +75,37 @@ public class HomeClassBean implements Serializable {
         this.grade = grade;
     }
 
-    public String getSchool() {
-        return school;
+    public String getSchoolName() {
+        return schoolName;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     public HomeClassBean() {
     }
 
-    public HomeClassBean(Integer id, String className, Integer studentNum, String subject, String grade, String school, String classPic) {
-        this.id = id;
+    public HomeClassBean(Integer cid, String className, Integer owner, String courseName, String grade, String schoolName, String classPic) {
+        this.cid = cid;
         this.className = className;
-        this.studentNum = studentNum;
-        this.subject = subject;
+        this.owner = owner;
+        this.courseName = courseName;
         this.grade = grade;
-        this.school = school;
+        this.schoolName = schoolName;
         this.classPic = classPic;
+    }
+
+    @Override
+    public String toString() {
+        return "HomeClassBean{" +
+                "cid=" + cid +
+                ", className='" + className + '\'' +
+                ", owner=" + owner +
+                ", courseName='" + courseName + '\'' +
+                ", grade='" + grade + '\'' +
+                ", schoolName='" + schoolName + '\'' +
+                ", classPic='" + classPic + '\'' +
+                '}';
     }
 }
