@@ -259,7 +259,7 @@
                 android:id="@+id/btn_add_student"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/line2"
+                android:layout_below="@id/line3"
                 android:layout_toLeftOf="@id/btn_remove_student"
                 android:layout_marginVertical="4dp"
                 android:layout_marginHorizontal="40dp"

@@ -24,11 +24,24 @@ public class UserManage {
     /**
      * 保存自动登录的用户信息
      */
-    public void saveUserInfo(Context context, String username, String password) {
+    public void saveUserInfo(Context context, String username, String password, Integer role) {
         SharedPreferences sp = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE);//Context.MODE_PRIVATE表示SharePrefences的数据只有自己应用程序能访问。
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("USER_NAME", username);
+        editor.putString("USERNAME", username);
         editor.putString("PASSWORD", password);
+        editor.putInt("ROLE", role);
+        editor.commit();
+    }
+
+    /**
+     * 清除保存的用户信息
+     */
+    public void clearUserInfo(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE);//Context.MODE_PRIVATE表示SharePrefences的数据只有自己应用程序能访问。
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("USERNAME");
+        editor.remove("PASSWORD");
+        editor.remove("ROLE");
         editor.commit();
     }
 
@@ -45,6 +58,7 @@ public class UserManage {
         UserInfo userInfo = new UserInfo();
         userInfo.setUsername(sp.getString("USERNAME", ""));
         userInfo.setPassword(sp.getString("PASSWORD", ""));
+        userInfo.setRole(sp.getInt("ROLE", 0));
         return userInfo;
     }
 

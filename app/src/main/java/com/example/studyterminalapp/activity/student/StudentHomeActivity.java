@@ -17,9 +17,11 @@ import android.widget.Toast;
 import com.example.studyterminalapp.MyApp;
 import com.example.studyterminalapp.R;
 import com.example.studyterminalapp.adapter.student.StudentHomeAdapter;
+import com.example.studyterminalapp.bean.Class;
 import com.example.studyterminalapp.bean.HomeClassBean;
 import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.SaTokenInfo;
+import com.example.studyterminalapp.bean.vo.PageInfo;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
 import com.example.studyterminalapp.utils.RequestManager;
@@ -104,21 +106,35 @@ public class StudentHomeActivity extends AppCompatActivity implements View.OnCli
         try {
             RequestManager.getInstance().GetRequest(paramsMap, Constants.USER_CLASS_LIST, new RequestManager.ResultCallback() {
                 @Override
-                public void onResponse(String code, String json) {
+                public void onResponse(String c, String json) {
 
                     //Log.d("TEST", "JSON: " + json);
-                    Type dataType = new TypeToken<Result<List<HomeClassBean>>>(){}.getType();
-                    Result<List<HomeClassBean>> result = JsonParse.getInstance().getResult(json, dataType);
-                    List<HomeClassBean> data = result.getData();
-                    if (data == null || data.isEmpty()) {
-                        return;
+                    Type dataType = new TypeToken<Result<PageInfo<HomeClassBean>>>(){}.getType();
+                    Result<PageInfo<HomeClassBean>> result = JsonParse.getInstance().getPageInfoResult(json, dataType);
+                    Integer code = result.getStatus();
+                    switch (code) {
+                        case 200:
+                            PageInfo<HomeClassBean> pageInfo = result.getData();
+                            List<HomeClassBean> data = pageInfo.getList();
+                            if (data == null || data.isEmpty()) {
+                                return;
+                            }
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    studentHomeAdapter.setData(data);
+                                }
+                            });
+                            break;
+                        default:
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(StudentHomeActivity.this, "查询异常", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            break;
                     }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            studentHomeAdapter.setData(data);
-                        }
-                    });
                 }
 
                 @Override

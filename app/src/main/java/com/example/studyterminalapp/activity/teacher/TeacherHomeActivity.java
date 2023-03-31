@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import com.example.studyterminalapp.bean.vo.ProfileTeacherVo;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
 import com.example.studyterminalapp.utils.RequestManager;
+import com.example.studyterminalapp.utils.UserManage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.UnsupportedEncodingException;
@@ -37,6 +41,9 @@ public class TeacherHomeActivity extends AppCompatActivity {
     private int tid;
     private TextView tvUsername, tvEmail, tvSchool, tvTeacherName;
     private LinearLayout llClassManage;
+    private Button btnLogout;
+    private RelativeLayout rlTitleBar;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +58,15 @@ public class TeacherHomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivBack.setVisibility(View.INVISIBLE);
+        rlTitleBar = (RelativeLayout) findViewById(R.id.title_bar);
+        rlTitleBar.setBackgroundColor(getResources().getColor(R.color.blue_color));
         tvUsername = findViewById(R.id.tv_username);
         tvTeacherName = findViewById(R.id.tv_teacher_name);
         tvEmail = (TextView) findViewById(R.id.tv_email);
         tvSchool = (TextView) findViewById(R.id.tv_school);
+        btnLogout = (Button) findViewById(R.id.btn_logout);
 
         llClassManage = (LinearLayout) findViewById(R.id.ll_class_manage);
 
@@ -63,6 +75,15 @@ public class TeacherHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(TeacherHomeActivity.this, TeacherClassActivity.class);
                 //intent.putExtra("textbook", (Textbook) adapter.getItem(position));
+                TeacherHomeActivity.this.startActivity(intent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserManage.getInstance().clearUserInfo(TeacherHomeActivity.this);
+                Intent intent = new Intent(TeacherHomeActivity.this, LoginActivity.class);
                 TeacherHomeActivity.this.startActivity(intent);
             }
         });

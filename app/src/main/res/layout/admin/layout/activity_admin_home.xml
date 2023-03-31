@@ -117,7 +117,7 @@
     <GridLayout
         android:id="@+id/rl_admin_application"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="260dp"
         android:layout_below="@id/tv_admin_constant"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
@@ -198,5 +198,14 @@
         </LinearLayout>
     </GridLayout>
 
-
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_admin_application"
+        android:layout_marginVertical="20dp"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:background="@color/coco"
+        android:text="退出登录"/>
 </RelativeLayout>

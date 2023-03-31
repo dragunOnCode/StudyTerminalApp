@@ -15,12 +15,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.studyterminalapp.MyApp;
 import com.example.studyterminalapp.R;
+import com.example.studyterminalapp.activity.LoginActivity;
+import com.example.studyterminalapp.activity.teacher.TeacherHomeActivity;
 import com.example.studyterminalapp.bean.HomeClassBean;
 import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
 import com.example.studyterminalapp.utils.RequestManager;
+import com.example.studyterminalapp.utils.UserManage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -40,7 +43,7 @@ public class StudentProfileActivity extends AppCompatActivity {
     private StudentBean student;
     private RelativeLayout rlTitleBar;
     private ImageView ivBack;
-    private Button btnHomePage, btnEditProfile, btnMyOrder, btnEditAddress;
+    private Button btnHomePage, btnEditProfile, btnMyOrder, btnEditAddress, btnLogout;
     private TextView tvTitle, tvStudentName, tvUsername, tvEmail, tvStudentNumber, tvSchool;
     private ImageView ivProfilePic;
     private int uid;
@@ -77,6 +80,7 @@ public class StudentProfileActivity extends AppCompatActivity {
         btnEditProfile = findViewById(R.id.btn_edit_profile);
         btnMyOrder = findViewById(R.id.btn_my_order);
         btnEditAddress = findViewById(R.id.btn_edit_address);
+        btnLogout = (Button) findViewById(R.id.btn_logout);
 
         tvTitle.setText("我的");
 
@@ -118,6 +122,15 @@ public class StudentProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(StudentProfileActivity.this, StudentContactActivity.class);
                 //intent.putExtra("student", student);
                 StudentProfileActivity.this.startActivity(intent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserManage.getInstance().clearUserInfo(StudentProfileActivity.this);
+                Intent intent = new Intent(StudentProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

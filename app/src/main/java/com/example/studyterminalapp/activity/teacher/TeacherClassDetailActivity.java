@@ -57,7 +57,7 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
     private MaterialEditText etClassName, etSchool;
     private MaterialSpinner msCourseName, msGrade;
     private MultiLineEditText etCourseDescription;
-    private Button btnCommitEdit, btnAddStudent, btnRemoveStudent;
+    private Button btnCommitEdit, btnAddStudent, btnRemoveStudent, btnChangeTextbook;
     private ResourceListView rlvList;
     private boolean isResourceExpanded, isStudentExpanded;
     private ResourceListAdapter resourceListAdapter;
@@ -112,6 +112,7 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
 
         btnAddStudent = (Button) findViewById(R.id.btn_add_student);
         btnRemoveStudent = (Button) findViewById(R.id.btn_remove_student);
+        btnChangeTextbook = (Button) findViewById(R.id.btn_change_textbook);
 
         ivTextbookPic = (ImageView) findViewById(R.id.iv_textbook_pic);
         tvTextbookName = (TextView) findViewById(R.id.tv_textbook_name);
@@ -199,6 +200,14 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
             }
         });
 
+        btnChangeTextbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherClassDetailActivity.this, ChangeTextbookActivity.class);
+                intent.putExtra("cid", teacherClass.getCid());
+                TeacherClassDetailActivity.this.startActivity(intent);
+            }
+        });
 
         btnAddStudent.setOnClickListener(new View.OnClickListener() {
             @Override
