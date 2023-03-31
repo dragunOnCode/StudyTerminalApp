@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grizzled"
+    android:orientation="vertical"
+    tools:context=".activity.teacher.TeacherClassDetailActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rl_class_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ps_color_transparent_white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_class_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="班级名称"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_class_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_name"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入班级名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_name"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="50dp"
+                android:text="科目"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/ms_course_name"
+                style="@style/Material.SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_course_name"
+                android:layout_marginTop="5dp"
+                android:enabled="true"
+                app:ms_entries="@array/subject_type" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_name"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@id/tv_course_name"
+                android:text="年级"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/ms_grade"
+                style="@style/Material.SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_grade"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="5dp"
+                android:enabled="true"
+                app:ms_entries="@array/grade_type" />
+
+            <TextView
+                android:id="@+id/tv_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ms_grade"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="20dp"
+                android:text="学校"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_school"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入学校名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_course_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_school"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="10dp"
+                android:text="课程描述"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.MultiLineEditText
+                android:id="@+id/et_course_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_course_description"
+                android:layout_marginTop="4dp"
+                android:background="@color/almond_white"
+                app:mlet_maxCount="400" />
+
+            <Button
+                android:id="@+id/btn_commit_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_course_description"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_bg_selector"
+                android:text="提交修改"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/btn_commit_edit"
+                android:layout_marginVertical="15dp"
+                android:background="@color/ps_color_grey" />
+
+            <TextView
+                android:id="@+id/tv_textbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line1"
+                android:layout_marginVertical="10dp"
+                android:text="班级教辅"
+                android:textColor="@color/smoky_black" />
+
+            <Button
+                android:id="@+id/btn_change_textbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line1"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="4dp"
+                android:background="@color/emerald"
+                android:text="更改教辅"
+                android:textColor="@color/white" />
+
+            <include
+                android:id="@+id/book_item"
+                layout="@layout/textbook_item"
+                android:layout_below="@id/tv_textbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"/>
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/btn_change_textbook"
+                android:layout_marginTop="140dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/ps_color_grey" />
+
+            <TextView
+                android:id="@+id/tv_resource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:layout_marginVertical="10dp"
+                android:text="资源列表"
+                android:textColor="@color/smoky_black" />
+
+            <Button
+                android:id="@+id/btn_add_resource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="4dp"
+                android:background="@color/emerald"
+                android:text="新增资源"
+                android:textColor="@color/white" />
+
+            <com.xuexiang.xui.widget.layout.ExpandableLayout
+                android:id="@+id/el_resource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_resource"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <com.example.studyterminalapp.views.ResourceListView
+                    android:id="@+id/rlv_list"
+                    style="@style/TextStyle.Explain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:dividerHeight="8dp"
+                    android:scrollbars="none" />
+            </com.xuexiang.xui.widget.layout.ExpandableLayout>
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/el_resource"
+                android:layout_marginVertical="15dp"
+                android:background="@color/ps_color_grey" />
+
+            <TextView
+                android:id="@+id/tv_class_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line3"
+                android:layout_marginVertical="10dp"
+                android:text="学生列表"
+                android:textColor="@color/smoky_black" />
+
+            <Button
+                android:id="@+id/btn_remove_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line3"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="4dp"
+                android:background="@color/price_red"
+                android:text="删除学生"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_add_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:layout_toLeftOf="@id/btn_remove_student"
+                android:layout_marginVertical="4dp"
+                android:layout_marginHorizontal="40dp"
+                android:background="@color/emerald"
+                android:text="添加学生"
+                android:textColor="@color/white" />
+
+            <com.xuexiang.xui.widget.layout.ExpandableLayout
+                android:id="@+id/el_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_student"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <com.example.studyterminalapp.views.StudentListView
+                    android:id="@+id/slv_list"
+                    style="@style/TextStyle.Explain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:dividerHeight="8dp"
+                    android:scrollbars="none" />
+            </com.xuexiang.xui.widget.layout.ExpandableLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

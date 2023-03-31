@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.admin.AdminTextbookActivity">
+    tools:context=".activity.teacher.TeacherClassActivity">
 
     <include layout="@layout/title_bar" />
 
     <com.xuexiang.xui.widget.button.RippleView
-        android:id="@+id/btn_add_textbook"
+        android:id="@+id/btn_add_class"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:background="@color/emerald"
             android:gravity="center"
-            android:text="新增教辅"
+            android:text="新增班级"
             android:textColor="@color/xui_config_color_white"
             android:textSize="20sp" />
 
@@ -32,15 +32,15 @@
         android:id="@+id/tv_class_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_textbook_search"
+        android:layout_below="@id/rl_class_search"
         android:layout_toRightOf="@id/tv_constant1"
-        android:text="总共 1 条结果"/>
+        android:text="总共 0 条结果"/>
 
     <RelativeLayout
-        android:id="@+id/rl_textbook_search"
+        android:id="@+id/rl_class_search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_add_textbook"
+        android:layout_below="@id/btn_add_class"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="16dp"
         android:gravity="center"
@@ -54,13 +54,14 @@
             android:enabled="true"
             app:ms_entries="@array/subject_type" />
 
-        <EditText
-            android:id="@+id/et_search_content"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/btn_search_content"
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/ms_grade"
+            style="@style/Material.SpinnerStyle"
+            android:layout_marginHorizontal="30dp"
             android:layout_toRightOf="@id/ms_search_type"
-            android:hint="输入查找的教辅名称" />
+            android:enabled="true"
+            app:ms_entries="@array/grade_type" />
+
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             android:id="@+id/btn_search_content"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10dp"
-            android:text="搜索"
+            android:text="过滤"
             android:textColor="@color/white"
             app:rb_backgroundColor="@color/blue_color" />
     </RelativeLayout>
@@ -78,8 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/rl_textbook_search"
-        android:text="教辅列表"
+        android:layout_below="@id/rl_class_search"
+        android:text="我管理的班级"
         android:textColor="@color/smoky_black"
         android:textStyle="bold"/>
 
@@ -101,7 +102,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
-
 
 </RelativeLayout>

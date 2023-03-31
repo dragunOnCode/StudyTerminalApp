@@ -4,4 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="tip_number_only_error_message">只能输入数字，最多支持小数点后两位</string>
+    <string name="regexp_number_only">(^-?[1-9](\\d+)?(\\.\\d{1,2})?$)|(^-?0$)|(^-?\\d\\.\\d{1,2}$)</string>
+    <string name="error_empty">输入不能为空</string>
 </resources>

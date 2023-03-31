@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="600dp"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".activity.CropActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="选择头像"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/mHeader_iv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/iv_temp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/mGoCamera_btn"-->
+<!--        android:text="拍照选择"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
+    <Button
+        android:id="@+id/mGoAlbm_btn"
+        android:text="本地相册选择"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:background="@color/emerald"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:text="上传图片"/>
+
+
+</LinearLayout>

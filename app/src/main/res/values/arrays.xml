@@ -19,4 +19,33 @@
         <item>地理</item>
     </string-array>
 
+    <string-array name="grade_type">
+        <item>一年级</item>
+        <item>二年级</item>
+        <item>三年级</item>
+        <item>四年级</item>
+        <item>五年级</item>
+        <item>六年级</item>
+        <item>七年级</item>
+        <item>八年级</item>
+        <item>九年级</item>
+        <item>高一</item>
+        <item>高二</item>
+        <item>高三</item>
+    </string-array>
+
+    <string-array name="question_difficulty">
+        <item>easy</item>
+        <item>mildeasy</item>
+        <item>medium</item>
+        <item>mildhard</item>
+        <item>hard</item>
+    </string-array>
+
+    <string-array name="question_type">
+        <item>choices</item>
+        <item>blank</item>
+        <item>calculation</item>
+    </string-array>
+
 </resources>

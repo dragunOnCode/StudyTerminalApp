@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <com.xuexiang.xui.widget.button.SmoothCheckBox
+        android:id="@+id/scb_check"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        app:scb_duration="100"
+        app:scb_color_checked="@color/price_red" />
+
+    <TextView
+        android:id="@+id/tv_student_name"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="张三"
+        android:textColor="@color/smoky_black"/>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Alex313"
+        android:textColor="@color/smoky_black"/>
+
+
+    <TextView
+        android:id="@+id/tv_student_number"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="202010193124"
+        android:textColor="@color/smoky_black"/>
+
+    <TextView
+        android:id="@+id/tv_gender"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="男"
+        android:textColor="@color/smoky_black"/>
+
+</LinearLayout>

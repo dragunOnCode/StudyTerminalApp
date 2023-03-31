@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grizzled"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".activity.admin.EditTextbookActivity">
+
+
+    <TextView
+        android:id="@+id/tv_edit_student1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="编辑教辅资料"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="5dp"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:id="@+id/rl_textbook_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="@color/ps_color_transparent_white">
+
+            <TextView
+                android:id="@+id/tv_textbook_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="教辅名称"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_textbook_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_name"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入教辅名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_name"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="50dp"
+                android:text="科目"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/ms_course_name"
+                style="@style/Material.SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_course_name"
+                android:layout_marginTop="5dp"
+                android:enabled="true"
+                app:ms_entries="@array/subject_type" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_name"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@id/tv_course_name"
+                android:text="年级"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/ms_grade"
+                style="@style/Material.SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_grade"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="5dp"
+                android:enabled="true"
+                app:ms_entries="@array/grade_type" />
+
+            <TextView
+                android:id="@+id/tv_textbook_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_grade"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="40dp"
+                android:text="作者信息"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_textbook_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_author"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入作者名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_press_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_author"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="40dp"
+                android:text="出版社"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_press_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_press_name"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入出版社名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_textbook_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_press_name"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="40dp"
+                android:text="定价" />
+
+
+            <com.xuexiang.xui.widget.edittext.ValidatorEditText
+                android:id="@+id/et_textbook_price"
+                style="@style/EditText.Normal"
+                android:layout_width="300dp"
+                android:layout_below="@id/tv_textbook_price"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="5dp"
+                android:hint="输入定价，最多支持小数点后两位"
+                android:singleLine="true"
+                app:met_autoValidate="true"
+                app:vet_errorMessage="@string/tip_number_only_error_message"
+                app:vet_regexp="@string/regexp_number_only"
+                app:vet_tipPosition="top" />
+
+            <TextView
+                android:id="@+id/tv_book_sn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_price"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="40dp"
+                android:text="ISBN" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_book_sn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_book_sn"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入本书ISBN号"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_textbook_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_book_sn"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="40dp"
+                android:text="内容简介"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+
+            <com.xuexiang.xui.widget.edittext.MultiLineEditText
+                android:id="@+id/et_textbook_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_description"
+                android:background="@color/grizzled"
+                android:layout_marginTop="4dp"
+                app:mlet_maxCount="120" />
+
+            <Button
+                android:id="@+id/btn_cancel_commit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_textbook_description"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/item_bg_selector"
+                android:text="取消修改"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_commit_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_textbook_description"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_bg_selector"
+                android:text="提交修改"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

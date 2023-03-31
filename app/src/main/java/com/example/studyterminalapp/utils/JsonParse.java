@@ -7,6 +7,7 @@ import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.SaTokenInfo;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -52,5 +53,12 @@ public class JsonParse {
 
     public <T> Result<T> getResult(String json, Type dataType) {
         return new Gson().fromJson(json, dataType);
+    }
+
+    public <T> Result<T> getPageInfoResult(String json, Type dataType) {
+        return new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create()
+                .fromJson(json, dataType);
     }
 }

@@ -87,7 +87,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:background="@color/black"
                 android:dividerHeight="8dp"
                 android:scrollbars="none" />
         </LinearLayout>

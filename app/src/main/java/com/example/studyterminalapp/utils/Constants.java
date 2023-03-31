@@ -11,5 +11,19 @@ public class Constants {
     public static final String USER_PROFILE = "/user/profile";
     public static final String TEACHER_PROFILE = "/teacher/profile";
     public static final String ADMIN_PROFILE = "/admin/profile";
+    public static final String TEXTBOOK_SEARCH = "/textbook/search";
+    public static final String TEXTBOOK = "/textbook";
     public static final String UPDATE_STUDENT_PROFILE = "/user/update";
+    public static final String GET_TEXTBOOK_PARENT_CHAPTER = "/textbook/parentChapter";
+    public static final String GET_TEXTBOOK_ALL_CHAPTER = "/textbook/allChapter";
+    public static final String QUESTION = "/question";
+    public static final String QUESTION_SEARCH = "/question/search";
+    public static final String CLASS_SEARCH = "/class/searchClassByOwner";
+    public static final String CLASS = "/class";
+    public static final String CLASS_ALL_STUDENT = "/user-class/class/all";
+    public static final String CLASS_RESOURCE = "/resource/class/all";
+    public static final String RESOURCE = "/resource";
+    public static final String USER_CLASS_BATCH_DELETE = "/user-class/batchDelete";
+    public static final String USER_CLASS_BATCH_ADD = "/user-class/batchAdd";
+    public static final String USER_SEARCH = "/user/searchStudent";
 }

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.TextbookDetailActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="5dp"
+        android:background="#fcf0c0"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:id="@+id/rl_textbook_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/ps_color_transparent_white">
+
+            <ImageView
+                android:id="@+id/iv_textbook_pic"
+                android:layout_width="120dp"
+                android:layout_height="160dp" />
+
+            <TextView
+                android:id="@+id/tv_textbook_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_toRightOf="@id/iv_textbook_pic"
+                android:text="不能承受的生命之轻"
+                android:textColor="@color/smoky_black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_textbook_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_name"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_textbook_pic"
+                android:text="米兰·昆德拉" />
+
+            <TextView
+                android:id="@+id/tv_press_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_author"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_textbook_pic"
+                android:text="中国戏剧出版社" />
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_press_name"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_textbook_pic"
+                android:text="语文"
+                android:textColor="@color/ps_color_grey_3e" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_press_name"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/tv_course_name"
+                android:text="高一"
+                android:textColor="@color/ps_color_grey_3e" />
+
+            <TextView
+                android:id="@+id/tv_publish_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_course_name"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_textbook_pic"
+                android:text="2019-05"
+                android:textColor="@color/ps_color_grey_3e" />
+
+            <Button
+                android:id="@+id/btn_edit_textbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_publish_date"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:background="@color/emerald"
+                android:text="编辑信息"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_textbook_pic"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/ps_color_grey" />
+
+            <TextView
+                android:id="@+id/tv_constant1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_textbook_pic"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="27dp"
+                android:text="简介"
+                android:textColor="@color/account_gray_color" />
+
+            <TextView
+                android:id="@+id/tv_textbook_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_constant1"
+                android:layout_margin="7dp"
+                android:text="本书试图描绘的正是从普法战争到20世纪二三十年代即“福楼拜到普鲁斯特”这段时期内，法兰西“学者共和国”的全景图，大量史料串联起法兰西第三共和治下法德知识界的恩怨往还、史学与文学的分合、德雷福斯事件呈现出的意识形态光谱以及朗松、涂尔干、圣勃夫、吕西安•费弗尔等一干活跃在世纪之交的法国学者群像" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_textbook_description"
+                android:layout_margin="2dp"
+                android:background="@color/grizzled" />
+
+            <TextView
+                android:id="@+id/tv_constant2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_description"
+                android:layout_margin="7dp"
+                android:text="章节"
+                android:textColor="@color/account_gray_color" />
+
+            <Button
+                android:id="@+id/btn_edit_chapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_description"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/emerald"
+                android:text="编辑章节"/>
+
+            <Button
+                android:id="@+id/btn_expand_chapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_textbook_description"
+                android:layout_toLeftOf="@id/btn_edit_chapter"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/emerald"
+                android:text="展开"/>
+
+            <com.xuexiang.xui.widget.layout.ExpandableLayout
+                android:id="@+id/el_chapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/tv_constant2"
+                android:orientation="vertical"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <com.example.studyterminalapp.views.ChapterListView
+                    style="@style/TextStyle.Explain"
+                    android:id="@+id/clv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:dividerHeight="8dp"
+                    android:background="@color/mint"
+                    android:scrollbars="none" />
+            </com.xuexiang.xui.widget.layout.ExpandableLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

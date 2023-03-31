@@ -15,6 +15,7 @@ import com.example.studyterminalapp.R;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.RequestManager;
+import com.luck.picture.lib.basic.PictureSelector;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;

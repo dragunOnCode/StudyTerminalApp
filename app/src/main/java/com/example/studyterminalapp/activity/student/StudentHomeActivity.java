@@ -129,28 +129,6 @@ public class StudentHomeActivity extends AppCompatActivity implements View.OnCli
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.USER_CLASS_LIST).build();
-//        Call call = client.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-//                String json = response.body().string();
-//                Log.d("TEST", "JSON: " + json);
-//                final List<HomeClassBean> homeClassList = JsonParse.getInstance().getHomeList(json);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        studentHomeAdapter.setData(homeClassList);
-//                    }
-//                });
-//            }
-//        });
     }
 
 

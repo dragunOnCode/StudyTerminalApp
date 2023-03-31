@@ -31,4 +31,7 @@
     <color name="eggshell">#fce6c9</color>
     <color name="buff">#a39480</color>
     <color name="orange">#ff6100</color>
+    <color name="coco">#d2691e</color>
+    <color name="mint">#bdfcc9</color>
+    <color name="sky_blue">#f0ffff</color>
 </resources>

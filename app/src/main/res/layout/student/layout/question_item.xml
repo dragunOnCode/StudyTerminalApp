@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/sky_blue"
+    android:gravity="center_vertical"
+    android:layout_margin="10dp"
+    android:paddingVertical="5dp">
+
+    <TextView
+        android:id="@+id/tv_question_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="x+y=5,x+2y=16,则x=_"
+        android:textColor="@color/smoky_black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_question_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_question_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="4dp"
+        android:text="填空题"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_question_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_question_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/tv_question_type"
+        android:text="简单"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_question_type"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="数学"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_question_type"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/tv_course_name"
+        android:gravity="center"
+        android:text="高一"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>

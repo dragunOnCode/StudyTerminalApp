@@ -1,4 +1,4 @@
-package com.example.studyterminalapp.activity.admin;
+package com.example.studyterminalapp.activity.teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,7 +16,10 @@ import android.widget.Toast;
 
 import com.example.studyterminalapp.MyApp;
 import com.example.studyterminalapp.R;
-import com.example.studyterminalapp.adapter.admin.TextbookRecyclerAdapter;
+import com.example.studyterminalapp.activity.admin.AddTextbookActivity;
+import com.example.studyterminalapp.activity.admin.TextbookDetailActivity;
+import com.example.studyterminalapp.adapter.teacher.ClassRecyclerAdapter;
+import com.example.studyterminalapp.bean.Class;
 import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.Textbook;
 import com.example.studyterminalapp.bean.vo.PageInfo;
@@ -41,21 +43,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AdminTextbookActivity extends AppCompatActivity {
-    private int aid;
+public class TeacherClassActivity extends AppCompatActivity {
+    private int tid;
     private RefreshLayout refreshLayout;
     private RecyclerView recyclerView;
-    private TextbookRecyclerAdapter adapter;//声明适配器
+    private ClassRecyclerAdapter adapter;//声明适配器
     private Context context;
-    private List<Textbook> result;
+    private List<Class> result;
     private int page = 1;
     private final int PAGE_SIZE = 10;
-    private RippleView btnAddTextbook;
-    private MaterialSpinner msSearchType;
-    private EditText etSearchContent;
+    private RippleView btnAddClass;
+    private MaterialSpinner msSearchType, msGrade;
     private RoundButton btnSearchContent;
-    private TextView tvTextbookTotal;
-    private String searchContent;
+    private TextView tvClassTotal;
+    private String searchGrade;
     private String searchType;
     private RelativeLayout rlTitleBar;
     private TextView tvTitle;
@@ -64,10 +65,10 @@ public class AdminTextbookActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_textbook);
-
+        setContentView(R.layout.activity_teacher_class);
+        
         context = this;
-        aid = MyApp.getId();
+        tid = MyApp.getId();
 
         initView();
         initListener();
@@ -86,7 +87,7 @@ public class AdminTextbookActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.tv_title);
         ivBack = findViewById(R.id.iv_back);
 
-        tvTitle.setText("教辅管理");
+        tvTitle.setText("班级管理");
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,14 +95,14 @@ public class AdminTextbookActivity extends AppCompatActivity {
             }
         });
 
-        btnAddTextbook = (RippleView) findViewById(R.id.btn_add_textbook);
+        btnAddClass = (RippleView) findViewById(R.id.btn_add_class);
         msSearchType = (MaterialSpinner) findViewById(R.id.ms_search_type);
-        etSearchContent = (EditText) findViewById(R.id.et_search_content);
+        msGrade = (MaterialSpinner) findViewById(R.id.ms_grade);
         btnSearchContent = (RoundButton) findViewById(R.id.btn_search_content);
-        tvTextbookTotal = (TextView) findViewById(R.id.tv_class_total);
+        tvClassTotal = (TextView) findViewById(R.id.tv_class_total);
 
         searchType = msSearchType.getText().toString();
-        searchContent = etSearchContent.getText().toString();
+        searchGrade = msGrade.getText().toString();
 
         refreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
         refreshLayout.setRefreshHeader(new ClassicsHeader(this));
@@ -109,7 +110,7 @@ public class AdminTextbookActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        adapter = new TextbookRecyclerAdapter(context, result);
+        adapter = new ClassRecyclerAdapter(context, result);
         /*
         与ListView效果对应的可以通过LinearLayoutManager来设置
         与GridView效果对应的可以通过GridLayoutManager来设置
@@ -132,7 +133,7 @@ public class AdminTextbookActivity extends AppCompatActivity {
             public void onRefresh(RefreshLayout refreshlayout) {
                 refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
                 refreshlayout.setEnableLoadMore(true);
-                getTextbook(PAGE_SIZE, page, searchType, searchContent, 0);
+                getTeacherClass(PAGE_SIZE, page, searchType, searchGrade, 0);
             }
         });
         refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -140,18 +141,18 @@ public class AdminTextbookActivity extends AppCompatActivity {
             public void onLoadMore(RefreshLayout refreshlayout) {
                 refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
                 page++;
-                getTextbook(PAGE_SIZE, page, searchType, searchContent, 1);
+                getTeacherClass(PAGE_SIZE, page, searchType, searchGrade, 1);
             }
         });
 
         // adapter的item跳转
-        adapter.setOnItemClickListener(new TextbookRecyclerAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ClassRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 // Toast.makeText(context, "这是条目" + position, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AdminTextbookActivity.this, TextbookDetailActivity.class);
-                intent.putExtra("textbook", (Textbook) adapter.getItem(position));
-                AdminTextbookActivity.this.startActivity(intent);
+                Intent intent = new Intent(TeacherClassActivity.this, TeacherClassDetailActivity.class);
+                intent.putExtra("class", (Class) adapter.getItem(position));
+                TeacherClassActivity.this.startActivity(intent);
             }
         });
 
@@ -159,45 +160,44 @@ public class AdminTextbookActivity extends AppCompatActivity {
         btnSearchContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchContent = etSearchContent.getText().toString();
+                searchGrade = msGrade.getText().toString();
                 searchType = msSearchType.getText().toString();
                 page = 1;
-                getTextbook(PAGE_SIZE, page, searchType, searchContent, 2);
+                getTeacherClass(PAGE_SIZE, page, searchType, searchGrade, 2);
             }
         });
 
-        // 新增教辅
-        btnAddTextbook.setOnClickListener(new View.OnClickListener() {
+        // 新增班级
+        btnAddClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(context, "新增", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AdminTextbookActivity.this, AddTextbookActivity.class);
-                intent.putExtra("id", aid);
+                Intent intent = new Intent(TeacherClassActivity.this, AddClassActivity.class);
+                //intent.putExtra("id", tid);
                 context.startActivity(intent);
             }
         });
     }
 
     // requestCase => 0 refresh; 1 load; 2 search
-    private void getTextbook(int pageSize, int pageNum, String courseName, String title, int requestCase) {
+    private void getTeacherClass(int pageSize, int pageNum, String courseName, String grade, int requestCase) {
         HashMap<String, Object> paramsMap = new HashMap<>();
-        if (!StringUtils.isEmpty(title)) {
-            paramsMap.put("content", title);
-        }
+        paramsMap.put("oid", tid);
+        paramsMap.put("grade", grade);
         paramsMap.put("courseName", courseName);
         paramsMap.put("pageNum", pageNum);
         paramsMap.put("pageSize", pageSize);
         try {
-            RequestManager.getInstance().GetRequest(paramsMap, Constants.TEXTBOOK_SEARCH, new RequestManager.ResultCallback() {
+            RequestManager.getInstance().GetRequest(paramsMap, Constants.CLASS_SEARCH, new RequestManager.ResultCallback() {
                 @Override
                 public void onResponse(String responseCode, String json) {
-                    Type dataType = new TypeToken<Result<PageInfo<Textbook>>>(){}.getType();
-                    Result<PageInfo<Textbook>> response = JsonParse.getInstance().getPageInfoResult(json, dataType);
+                    Type dataType = new TypeToken<Result<PageInfo<Class>>>(){}.getType();
+                    Result<PageInfo<Class>> response = JsonParse.getInstance().getPageInfoResult(json, dataType);
                     int code = response.getStatus();
                     switch (code) {
                         case 200:
-                            //Log.d("TEST", "JSON: " + json);
-                            PageInfo<Textbook> data = response.getData();
+                            Log.d("TEST", "JSON: " + json);
+                            PageInfo<Class> data = response.getData();
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -205,10 +205,10 @@ public class AdminTextbookActivity extends AppCompatActivity {
                                         result.clear();
                                     }
                                     result.addAll(data.getList());
-                                    tvTextbookTotal.setText("总共 " + data.getTotal() + " 条结果");
+                                    tvClassTotal.setText("总共 " + data.getTotal() + " 条结果");
                                     adapter.notifyDataSetChanged();
                                     if (data.isIsLastPage()) {
-                                        AdminTextbookActivity.this.refreshLayout.setEnableLoadMore(false);
+                                        TeacherClassActivity.this.refreshLayout.setEnableLoadMore(false);
                                     }
                                 }
                             });
@@ -219,7 +219,7 @@ public class AdminTextbookActivity extends AppCompatActivity {
                                 public void run() {
                                     Toast.makeText(context, response.getMsg(), Toast.LENGTH_SHORT).show();
                                     result.clear();
-                                    tvTextbookTotal.setText("总共 0 条结果");
+                                    tvClassTotal.setText("总共 0 条结果");
                                     adapter.notifyDataSetChanged();
                                 }
                             });

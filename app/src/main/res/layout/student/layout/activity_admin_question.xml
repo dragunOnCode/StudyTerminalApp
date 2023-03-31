@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.admin.AdminTextbookActivity">
+    tools:context=".activity.admin.AdminQuestionActivity">
 
     <include layout="@layout/title_bar" />
 
     <com.xuexiang.xui.widget.button.RippleView
-        android:id="@+id/btn_add_textbook"
+        android:id="@+id/btn_add_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -22,25 +22,25 @@
             android:layout_gravity="center"
             android:background="@color/emerald"
             android:gravity="center"
-            android:text="新增教辅"
+            android:text="录入题目"
             android:textColor="@color/xui_config_color_white"
             android:textSize="20sp" />
 
     </com.xuexiang.xui.widget.button.RippleView>
 
     <TextView
-        android:id="@+id/tv_class_total"
+        android:id="@+id/tv_question_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_textbook_search"
+        android:layout_below="@id/rl_question_search"
         android:layout_toRightOf="@id/tv_constant1"
         android:text="总共 1 条结果"/>
 
     <RelativeLayout
-        android:id="@+id/rl_textbook_search"
+        android:id="@+id/rl_question_search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_add_textbook"
+        android:layout_below="@id/btn_add_question"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="16dp"
         android:gravity="center"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/btn_search_content"
             android:layout_toRightOf="@id/ms_search_type"
-            android:hint="输入查找的教辅名称" />
+            android:hint="输入查找的题目名称" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             android:id="@+id/btn_search_content"
@@ -78,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/rl_textbook_search"
-        android:text="教辅列表"
+        android:layout_below="@id/rl_question_search"
+        android:text="题目列表"
         android:textColor="@color/smoky_black"
         android:textStyle="bold"/>
 
@@ -101,7 +101,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
-
 
 </RelativeLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.teacher.AddStudentActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_student_name"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="学生姓名"
+            android:textSize="16sp"
+            android:textColor="@color/smoky_black"/>
+
+        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+            android:id="@+id/et_student_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="end"
+            android:hint="请输入学生姓名"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_below="@id/ll1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_student_number"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="学号"
+            android:textSize="16sp"
+            android:textColor="@color/smoky_black"/>
+
+        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+            android:id="@+id/et_student_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="end"
+            android:hint="请输入学生学号"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_below="@id/ll2"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_school"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="学校"
+            android:textSize="16sp"
+            android:textColor="@color/smoky_black"/>
+
+        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+            android:id="@+id/et_school"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="end"
+            android:hint="请输入学生学校"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_search_student"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="搜索"
+        android:textSize="18sp"
+        android:background="@color/emerald"
+        android:layout_below="@id/ll3"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:layout_margin="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="学生列表"
+        android:textColor="@color/smoky_black"
+        android:textStyle="bold"
+        android:layout_below="@id/btn_search_student"/>
+
+    <Button
+        android:id="@+id/btn_add_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_search_student"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="30dp"
+        android:text="添加"/>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_add_student"
+        android:layout_margin="20dp">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</RelativeLayout>
