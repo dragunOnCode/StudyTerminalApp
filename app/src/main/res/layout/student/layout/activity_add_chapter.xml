@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grizzled"
+    android:padding="30dp"
+    tools:context=".activity.admin.AddChapterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navajo_white"
+        android:gravity="center"
+        android:text="新增章节"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_chapter_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="70dp"
+        android:text="章节名称"
+        android:textColor="@color/smoky_black"
+        android:textSize="14sp" />
+
+    <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+        android:id="@+id/et_chapter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_chapter_name"
+        android:layout_marginHorizontal="40dp"
+        android:hint="输入章节名称"
+        app:met_allowEmpty="false"
+        app:met_autoValidate="true"
+        app:met_errorEmpty="@string/error_empty" />
+
+    <TextView
+        android:id="@+id/tv_chapter_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_chapter_name"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="50dp"
+        android:text="章节"
+        android:textColor="@color/smoky_black"
+        android:textSize="14sp" />
+
+
+    <com.xuexiang.xui.widget.edittext.ValidatorEditText
+        android:id="@+id/et_chapter_num"
+        style="@style/EditText.Normal"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tv_chapter_num"
+        android:layout_marginTop="5dp"
+        android:hint="输入章节号"
+        android:singleLine="true"
+        app:met_autoValidate="true"
+        app:vet_errorMessage="@string/tip_chapter_error_message"
+        app:vet_regexp="@string/regexp_chapter"
+        app:vet_tipPosition="top" />
+
+    <TextView
+        android:id="@+id/tv_is_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_chapter_num"
+        android:layout_marginTop="50dp"
+        android:text="是否是子章节"
+        android:textColor="@color/smoky_black"
+        android:textSize="14sp" />
+
+    <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+        android:id="@+id/ms_is_child"
+        style="@style/Material.SpinnerStyle"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tv_is_child"
+        android:layout_marginTop="5dp"
+        android:enabled="true"
+        app:ms_entries="@array/binary" />
+
+    <TextView
+        android:id="@+id/tv_child_chapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_chapter_num"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/tv_is_child"
+        android:text="子章节"
+        android:textColor="@color/smoky_black"
+        android:textSize="14sp" />
+
+
+    <com.xuexiang.xui.widget.edittext.ValidatorEditText
+        android:id="@+id/et_child_chapter"
+        style="@style/EditText.Normal"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tv_child_chapter"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_is_child"
+        android:hint="输入子章节号"
+        android:singleLine="true"
+        app:met_autoValidate="true"
+        app:vet_errorMessage="@string/tip_chapter_error_message"
+        app:vet_regexp="@string/regexp_chapter"
+        app:vet_tipPosition="top" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ms_is_child"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/item_bg_selector"
+        android:text="取消"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_commit_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ms_is_child"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_bg_selector"
+        android:text="新增章节"
+        android:textSize="20sp" />
+
+</RelativeLayout>

@@ -146,7 +146,7 @@
                 android:textColor="@color/account_gray_color" />
 
             <Button
-                android:id="@+id/btn_edit_chapter"
+                android:id="@+id/btn_add_chapter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_textbook_description"
@@ -154,14 +154,14 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="7dp"
                 android:background="@color/emerald"
-                android:text="编辑章节"/>
+                android:text="新增章节"/>
 
             <Button
                 android:id="@+id/btn_expand_chapter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_textbook_description"
-                android:layout_toLeftOf="@id/btn_edit_chapter"
+                android:layout_toLeftOf="@id/btn_add_chapter"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="7dp"
                 android:background="@color/emerald"

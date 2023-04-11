@@ -28,4 +28,10 @@ public class Constants {
     public static final String USER_CLASS_BATCH_ADD = "/user-class/batchAdd";
     public static final String USER_SEARCH = "/user/searchStudent";
     public static final String BIND_TEXTBOOK = "/class/bindTextbook";
+    public static final String ADD_CHAPTER = "/chapter/android/addChapter";
+    public static final String DELETE_CHAPTER = "/chapter/android/deleteChapterAndChild";
+    public static final String UPDATE_CHAPTER = "/chapter/android/updateChapter";
+    public static final String CHAPTER_QUESTION = "/chapter-question";
+    public static final String CHAPTER_QUESTION_LIST = "/chapter-question/list";
+
 }

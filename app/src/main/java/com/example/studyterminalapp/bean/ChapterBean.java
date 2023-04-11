@@ -76,4 +76,16 @@ public class ChapterBean implements Serializable {
     public void setChildChapter(Integer childChapter) {
         this.childChapter = childChapter;
     }
+
+    @Override
+    public String toString() {
+        return "ChapterBean{" +
+                "cid=" + cid +
+                ", chapterName='" + chapterName + '\'' +
+                ", textbookId='" + textbookId + '\'' +
+                ", chapterNum=" + chapterNum +
+                ", isChild=" + isChild +
+                ", childChapter=" + childChapter +
+                '}';
+    }
 }

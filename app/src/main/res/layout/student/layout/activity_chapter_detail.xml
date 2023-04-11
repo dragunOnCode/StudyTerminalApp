@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.ChapterDetailActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="5dp"
+        android:background="#fcf0c0"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rl_chapter_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_chapter_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="章节名称"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                android:id="@+id/et_chapter_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_chapter_name"
+                android:layout_marginHorizontal="40dp"
+                android:hint="输入章节名称"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_chapter_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_chapter_name"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="50dp"
+                android:text="章节"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+
+            <com.xuexiang.xui.widget.edittext.ValidatorEditText
+                android:id="@+id/et_chapter_num"
+                style="@style/EditText.Normal"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_chapter_num"
+                android:layout_marginTop="5dp"
+                android:hint="输入章节号"
+                android:singleLine="true"
+                app:met_autoValidate="true"
+                app:vet_errorMessage="@string/tip_chapter_error_message"
+                app:vet_regexp="@string/regexp_chapter"
+                app:vet_tipPosition="top" />
+
+            <TextView
+                android:id="@+id/tv_is_child"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_chapter_num"
+                android:layout_marginTop="30dp"
+                android:text="是否是子章节"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/ms_is_child"
+                style="@style/Material.SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_is_child"
+                android:layout_marginTop="5dp"
+                android:enabled="true"
+                app:ms_entries="@array/binary" />
+
+            <TextView
+                android:id="@+id/tv_child_chapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_chapter_num"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/tv_is_child"
+                android:text="子章节"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+
+            <com.xuexiang.xui.widget.edittext.ValidatorEditText
+                android:id="@+id/et_child_chapter"
+                style="@style/EditText.Normal"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tv_child_chapter"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tv_is_child"
+                android:hint="输入子章节号"
+                android:singleLine="true"
+                app:met_autoValidate="true"
+                app:vet_errorMessage="@string/tip_chapter_error_message"
+                app:vet_regexp="@string/regexp_chapter"
+                app:vet_tipPosition="top" />
+
+            <Button
+                android:id="@+id/btn_commit_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ms_is_child"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_bg_selector"
+                android:text="更改章节信息"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/car_gray_color"
+                android:layout_marginVertical="20dp"
+                android:layout_below="@id/btn_commit_edit"/>
+
+            <TextView
+                android:id="@+id/tv_question_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_commit_edit"
+                android:layout_marginTop="40dp"
+                android:text="题目列表"
+                android:textColor="@color/smoky_black"
+                android:padding="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_add_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_below="@id/btn_commit_edit"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentRight="true"
+                android:text="添加题目"
+                android:background="@color/grizzled"
+                android:textColor="@color/smoky_black"
+                android:padding="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.xuexiang.xui.widget.layout.ExpandableLayout
+                android:id="@+id/el_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/tv_question_list"
+                android:orientation="vertical"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <com.example.studyterminalapp.views.QuestionListView
+                    style="@style/TextStyle.Explain"
+                    android:id="@+id/qlv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:dividerHeight="8dp"
+                    android:background="@color/mint"
+                    android:scrollbars="none" />
+            </com.xuexiang.xui.widget.layout.ExpandableLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

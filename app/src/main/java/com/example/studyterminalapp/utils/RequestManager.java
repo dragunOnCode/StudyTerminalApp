@@ -244,9 +244,11 @@ public class RequestManager {
     public void DeleteRequest(HashMap<String, Object> paramsMap, String url, final ResultCallback callback) throws UnsupportedEncodingException {
         gson = new Gson();
         StringBuffer sb = new StringBuffer();
-        sb.append("?");
-
         Iterator<String> iterator = paramsMap.keySet().iterator();
+        if (iterator.hasNext()) {
+            sb.append("?");
+        }
+
         while (iterator.hasNext()) {
             String key = iterator.next();
             String value = URLEncoder.encode(paramsMap.get(key).toString(), "utf-8");

@@ -35,7 +35,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
     private Textbook textbook;
     private ChapterListAdapter chapterListAdapter;
     private ChapterListView clvList;
-    private Button btnEditTextbook, btnEditChapter, btnExpandChapter;
+    private Button btnEditTextbook, btnAddChapter, btnExpandChapter;
     private int tid;
     private TextView tvTextbookName, tvTextbookAuthor, tvPressName, tvCourseName, tvGrade,
             tvPublishDate, tvTextbookDescription;
@@ -71,7 +71,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
         clvList = (ChapterListView) findViewById(R.id.clv_list);
 
         btnEditTextbook = (Button) findViewById(R.id.btn_edit_textbook);
-        btnEditChapter = (Button) findViewById(R.id.btn_edit_chapter);
+        btnAddChapter = (Button) findViewById(R.id.btn_add_chapter);
         btnExpandChapter = (Button) findViewById(R.id.btn_expand_chapter);
 
         tvTitle.setText(textbook.getTextbookName());
@@ -94,10 +94,13 @@ public class TextbookDetailActivity extends AppCompatActivity {
             }
         });
 
-        btnEditChapter.setOnClickListener(new View.OnClickListener() {
+        btnAddChapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // todo: 编辑章节
+                Log.i("Add Chapter", "准备跳转到AddChapter");
+                Intent intent = new Intent(TextbookDetailActivity.this, AddChapterActivity.class);
+                intent.putExtra("textbookId", tid);
+                TextbookDetailActivity.this.startActivity(intent);
             }
         });
 
@@ -134,6 +137,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
                     Type dataType = new TypeToken<Result<List<ChapterBean>>>(){}.getType();
                     Result<List<ChapterBean>> result = JsonParse.getInstance().getResult(json, dataType);
                     List<ChapterBean> data = result.getData();
+                    Log.i("Chapter List", data.toString());
                     if (data == null || data.isEmpty()) {
                         return;
                     }

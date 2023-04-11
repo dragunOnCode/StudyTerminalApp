@@ -2,10 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/sky_blue"
-    android:gravity="center_vertical"
     android:layout_margin="10dp"
-    android:paddingVertical="5dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/tv_question_content"
@@ -66,5 +64,14 @@
         android:textColor="@color/color_gray"
         android:textSize="12sp" />
 
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/navajo_white"
+        android:text="删除"
+        android:textColor="@color/price_red"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>

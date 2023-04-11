@@ -51,19 +51,19 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                     break;
                 case GO_STUDENT_HOME:
-                    Intent intent1 = new Intent(SplashActivity.this, StudentHomeActivity.class);
-                    startActivity(intent1);
-                    finish();
+//                    Intent intent1 = new Intent(SplashActivity.this, StudentHomeActivity.class);
+//                    startActivity(intent1);
+//                    finish();
                     break;
                 case GO_TEACHER_HOME:
-                    Intent intent2 = new Intent(SplashActivity.this, TeacherHomeActivity.class);
-                    startActivity(intent2);
-                    finish();
+//                    Intent intent2 = new Intent(SplashActivity.this, TeacherHomeActivity.class);
+//                    startActivity(intent2);
+//                    finish();
                     break;
                 case GO_ADMIN_HOME:
-                    Intent intent3 = new Intent(SplashActivity.this, AdminHomeActivity.class);
-                    startActivity(intent3);
-                    finish();
+//                    Intent intent3 = new Intent(SplashActivity.this, AdminHomeActivity.class);
+//                    startActivity(intent3);
+//                    finish();
                     break;
             }
             HashMap<String, Object> param = new HashMap<>();
@@ -90,7 +90,6 @@ public class SplashActivity extends AppCompatActivity {
                                 String type = data.getLoginId().substring(0, 1);
                                 int id = Integer.parseInt(data.getLoginId().substring(1));
                                 MyApp.setId(id);
-                                Log.i("Login Response", response);
                                 Class cls = null;
                                 if ("s".equals(type)) {
                                     cls = StudentHomeActivity.class;
@@ -111,6 +110,9 @@ public class SplashActivity extends AppCompatActivity {
                                 break;
                             default:
                                 Log.e("Login Response Not 200", response);
+                                Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                                startActivity(loginIntent);
+                                finish();
                                 break;
                         }
                     }
