@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grizzled"
+    android:orientation="vertical"
+    tools:context=".activity.teacher.ClassHomeworkActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rl_class_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ps_color_transparent_white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_constant1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="班级名称"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_class_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_constant1"
+                android:layout_marginHorizontal="20dp"
+                android:hint="班级"
+                app:met_allowEmpty="false"
+                app:met_autoValidate="true"
+                app:met_errorEmpty="@string/error_empty" />
+
+            <TextView
+                android:id="@+id/tv_constant2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_name"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="20dp"
+                android:text="科目"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_constant2"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="10dp"
+                android:text="null"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_constant3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_class_name"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/tv_course_name"
+                android:text="年级"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_constant3"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tv_course_name"
+                android:text="null"
+                android:textSize="14sp"  />
+
+            <TextView
+                android:id="@+id/tv_constant4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_grade"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="20dp"
+                android:text="学校"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_grade"
+                android:layout_toRightOf="@id/tv_constant4"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:text="null"
+                android:textSize="14sp"/>
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_school"
+                android:layout_marginVertical="15dp"
+                android:background="@color/ps_color_grey" />
+
+            <TextView
+                android:id="@+id/tv_homework"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line1"
+                android:layout_marginVertical="10dp"
+                android:text="作业列表"
+                android:textColor="@color/smoky_black" />
+
+            <Button
+                android:id="@+id/btn_add_homework"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line1"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="4dp"
+                android:background="@color/emerald"
+                android:text="发布作业"
+                android:textColor="@color/white" />
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/tv_homework">
+                <com.scwang.smart.refresh.header.ClassicsHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+                <com.scwang.smart.refresh.footer.ClassicsFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

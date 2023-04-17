@@ -11,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -57,7 +58,7 @@ public class JsonParse {
 
     public <T> Result<T> getPageInfoResult(String json, Type dataType) {
         return new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter())
                 .create()
                 .fromJson(json, dataType);
     }

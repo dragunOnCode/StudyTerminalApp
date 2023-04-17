@@ -40,7 +40,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
 
     private int tid;
     private TextView tvUsername, tvEmail, tvSchool, tvTeacherName;
-    private LinearLayout llClassManage;
+    private LinearLayout llClassManage, llHomeworkManage;
     private Button btnLogout;
     private RelativeLayout rlTitleBar;
     private ImageView ivBack;
@@ -69,11 +69,22 @@ public class TeacherHomeActivity extends AppCompatActivity {
         btnLogout = (Button) findViewById(R.id.btn_logout);
 
         llClassManage = (LinearLayout) findViewById(R.id.ll_class_manage);
+        llHomeworkManage = (LinearLayout) findViewById(R.id.ll_homework_manage);
 
         llClassManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TeacherHomeActivity.this, TeacherClassActivity.class);
+                //intent.putExtra("textbook", (Textbook) adapter.getItem(position));
+                TeacherHomeActivity.this.startActivity(intent);
+            }
+        });
+
+        llHomeworkManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(TeacherHomeActivity.this, TeacherHomeworkActivity.class);
                 //intent.putExtra("textbook", (Textbook) adapter.getItem(position));
                 TeacherHomeActivity.this.startActivity(intent);
             }

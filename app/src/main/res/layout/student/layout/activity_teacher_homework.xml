@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.teacher.TeacherHomeworkActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/tv_class_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_class_search"
+        android:layout_toRightOf="@id/tv_constant1"
+        android:text="总共 0 条结果"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_class_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_add_class"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/ms_search_type"
+            style="@style/Material.SpinnerStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="20dp"
+            android:enabled="true"
+            app:ms_entries="@array/subject_type" />
+
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/ms_grade"
+            style="@style/Material.SpinnerStyle"
+            android:layout_marginHorizontal="30dp"
+            android:layout_toRightOf="@id/ms_search_type"
+            android:enabled="true"
+            app:ms_entries="@array/grade_type" />
+
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_search_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:text="过滤"
+            android:textColor="@color/white"
+            app:rb_backgroundColor="@color/blue_color" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_constant1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@id/rl_class_search"
+        android:text="我管理的班级"
+        android:textColor="@color/smoky_black"
+        android:textStyle="bold"/>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_constant1"
+        android:layout_margin="20dp">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</RelativeLayout>

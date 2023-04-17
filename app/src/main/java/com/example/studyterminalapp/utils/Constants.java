@@ -33,5 +33,9 @@ public class Constants {
     public static final String UPDATE_CHAPTER = "/chapter/android/updateChapter";
     public static final String CHAPTER_QUESTION = "/chapter-question";
     public static final String CHAPTER_QUESTION_LIST = "/chapter-question/list";
-
+    public static final String CHAPTER = "/chapter";
+    public static final String HOMEWORK = "/homework";
+    public static final String HOMEWORK_LIST = "/homework/list";
+    public static final String AVAILABLE_HOMEWORK = "/homework/availableChapter";
+    public static final String TEST = "/homework/test";
 }
