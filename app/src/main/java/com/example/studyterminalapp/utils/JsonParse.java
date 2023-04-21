@@ -53,7 +53,10 @@ public class JsonParse {
     }
 
     public <T> Result<T> getResult(String json, Type dataType) {
-        return new Gson().fromJson(json, dataType);
+        return new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter())
+                .create()
+                .fromJson(json, dataType);
     }
 
     public <T> Result<T> getPageInfoResult(String json, Type dataType) {

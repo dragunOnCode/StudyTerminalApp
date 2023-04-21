@@ -119,4 +119,21 @@ public class SaTokenInfo implements Serializable {
     public void setTag(Object tag) {
         this.tag = tag;
     }
+
+    @Override
+    public String toString() {
+        return "SaTokenInfo{" +
+                "tokenName='" + tokenName + '\'' +
+                ", tokenValue='" + tokenValue + '\'' +
+                ", isLogin=" + isLogin +
+                ", loginId='" + loginId + '\'' +
+                ", loginType='" + loginType + '\'' +
+                ", tokenTimeout=" + tokenTimeout +
+                ", sessionTimeout=" + sessionTimeout +
+                ", tokenSessionTimeout=" + tokenSessionTimeout +
+                ", tokenActivityTimeout=" + tokenActivityTimeout +
+                ", loginDevice='" + loginDevice + '\'' +
+                ", tag=" + tag +
+                '}';
+    }
 }

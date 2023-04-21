@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.UploadEbookActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/tv_file_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btn_file_pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_file_name"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="onFilePick"
+        android:text="文件选择"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_file_pick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="15dp"
+        android:background="@color/navajo_white"
+        android:onClick="onUploadClick"
+        android:text="上传"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_upload_progress"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/btn_upload"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="上传进度"
+            android:textColor="@color/smoky_black" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                android:id="@+id/hpv_upload"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                app:hpv_end_color="@color/emerald"
+                app:hpv_end_progress="92"
+                app:hpv_isTracked="true"
+                app:hpv_progress_duration="2600"
+                app:hpv_progress_textColor="#696969"
+                app:hpv_progress_textVisibility="false"
+                app:hpv_start_color="@color/emerald"
+                app:hpv_track_color="#f4f4f4"
+                app:hpv_track_width="8dp" />
+
+            <TextView
+                android:id="@+id/tv_file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/file_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_upload_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_upload_progress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/uploading_msg" />
+
+</RelativeLayout>

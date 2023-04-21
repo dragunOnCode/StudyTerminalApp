@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_permission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:onClick="onPermission"
+                android:text="所有文件访问权限" />
+
+            <Button
+                android:id="@+id/btn_file_pick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_permission"
+                android:layout_marginVertical="10dp"
+                android:onClick="onFilePick"
+                android:text="文件选择" />
+
+            <Button
+                android:id="@+id/btn_dir_pick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_file_pick"
+                android:layout_marginVertical="10dp"
+                android:onClick="onDirPick"
+                android:text="目录选择" />
+
+            <Button
+                android:id="@+id/btn_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_dir_pick"
+                android:layout_marginVertical="10dp"
+                android:onClick="onDialogPick"
+                android:text="弹窗浏览" />
+
+            <!--        <com.github.gzuliyujiang.filepicker.FileExplorer-->
+            <!--            android:id="@+id/file_picker_explorer"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:layout_marginTop="10dp" />-->
+
+            <Button
+                android:id="@+id/btn_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_dialog"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="10dp"
+                android:background="@color/account_gray_color"
+                android:onClick="onUploadClick"
+                android:text="上传" />
+
+            <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                android:id="@+id/hpv_upload"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/btn_upload"
+                app:hpv_end_color="@color/emerald"
+                app:hpv_end_progress="92"
+                app:hpv_isTracked="true"
+                app:hpv_progress_duration="2600"
+                app:hpv_progress_textColor="#696969"
+                app:hpv_progress_textVisibility="false"
+                app:hpv_start_color="@color/emerald"
+                app:hpv_track_color="#f4f4f4"
+                app:hpv_track_width="8dp" />
+
+            <ImageView
+                android:id="@+id/iv_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hpv_upload"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

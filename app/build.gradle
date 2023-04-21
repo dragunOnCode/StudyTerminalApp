@@ -14,6 +14,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        //使用toObservableXxx方法时必须，传入你依赖的RxJava版本
+                        rxhttp_rxjava: '3.1.4',
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -104,5 +113,16 @@ dependencies {
     implementation  'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
     implementation  'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
     implementation  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+
+    def rxhttp_version = '3.0.2'
+    implementation "com.github.liujingxing.rxhttp:rxhttp:$rxhttp_version"
+    annotationProcessor "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttp_version"
+    //rxjava3
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.4'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'com.github.liujingxing.rxlife:rxlife-rxjava3:2.2.2' //管理RxJava3生命周期，页面销毁，关闭请求
+
+    // 文件选择
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.11'
 
 }

@@ -57,7 +57,7 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
     private MaterialEditText etClassName, etSchool;
     private MaterialSpinner msCourseName, msGrade;
     private MultiLineEditText etCourseDescription;
-    private Button btnCommitEdit, btnAddStudent, btnRemoveStudent, btnChangeTextbook;
+    private Button btnCommitEdit, btnAddStudent, btnRemoveStudent, btnChangeTextbook, btnAddResource;
     private ResourceListView rlvList;
     private boolean isResourceExpanded, isStudentExpanded;
     private ResourceListAdapter resourceListAdapter;
@@ -104,7 +104,7 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
         tvClassStudent = (TextView) findViewById(R.id.tv_class_student);
         isStudentExpanded = false;
 
-        resourceListAdapter = new ResourceListAdapter(this);
+        resourceListAdapter = new ResourceListAdapter(this, 1);
         rlvList.setAdapter(resourceListAdapter);
 
         studentListAdapter = new StudentListAdapter(this);
@@ -121,6 +121,8 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
         tvCourseName = (TextView) findViewById(R.id.tv_course_name);
         tvGrade = (TextView) findViewById(R.id.tv_grade);
         bookItem = (RelativeLayout) findViewById(R.id.book_item);
+
+        btnAddResource = (Button) findViewById(R.id.btn_add_resource);
     }
 
     private void initListener() {
@@ -215,6 +217,16 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
                 // todo添加学生
                 Intent intent = new Intent(TeacherClassDetailActivity.this, AddStudentActivity.class);
                 intent.putExtra("cid", teacherClass.getCid());
+                TeacherClassDetailActivity.this.startActivity(intent);
+            }
+        });
+
+        btnAddResource.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // todo:添加资源
+                Intent intent = new Intent(TeacherClassDetailActivity.this, AddResourceActivity.class);
+                intent.putExtra("classId", teacherClass.getCid());
                 TeacherClassDetailActivity.this.startActivity(intent);
             }
         });

@@ -74,7 +74,7 @@ public class StudentHomeAdapter extends BaseAdapter {
             viewHolder.tvSubject.setText(homeClassBean.getCourseName());
             viewHolder.tvGrade.setText(homeClassBean.getGrade());
             viewHolder.tvSchool.setText(homeClassBean.getSchoolName());
-            viewHolder.tvStudentNum.setText(homeClassBean.getOwner() + " 是任课老师");
+            viewHolder.tvStudentNum.setText("");
             Glide.with(context)
                     .load(homeClassBean.getClassPic())
                     .error(R.mipmap.ic_launcher)

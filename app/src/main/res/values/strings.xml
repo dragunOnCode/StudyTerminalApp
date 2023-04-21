@@ -9,4 +9,9 @@
     <string name="error_empty">输入不能为空</string>
     <string name="tip_chapter_error_message">只能输入数字</string>
     <string name="regexp_chapter">(^[0-9]*[1-9][0-9]*$)</string>
+    <string name="file_size">文件大小：</string>
+    <string name="uploading_msg">上传中，请勿退出界面，等待上传完成...</string>
+    <string name="uploaded_msg">上传成功！</string>
+    <string name="tip_download">下载文件</string>
+    <string name="content_downloading">正在下载中，请稍后</string>
 </resources>

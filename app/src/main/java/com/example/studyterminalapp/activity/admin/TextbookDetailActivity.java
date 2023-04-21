@@ -35,7 +35,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
     private Textbook textbook;
     private ChapterListAdapter chapterListAdapter;
     private ChapterListView clvList;
-    private Button btnEditTextbook, btnAddChapter, btnExpandChapter;
+    private Button btnEditTextbook, btnAddChapter, btnExpandChapter, btnUploadEbook;
     private int tid;
     private TextView tvTextbookName, tvTextbookAuthor, tvPressName, tvCourseName, tvGrade,
             tvPublishDate, tvTextbookDescription;
@@ -73,6 +73,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
         btnEditTextbook = (Button) findViewById(R.id.btn_edit_textbook);
         btnAddChapter = (Button) findViewById(R.id.btn_add_chapter);
         btnExpandChapter = (Button) findViewById(R.id.btn_expand_chapter);
+        btnUploadEbook = (Button) findViewById(R.id.btn_upload_ebook);
 
         tvTitle.setText(textbook.getTextbookName());
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +113,15 @@ public class TextbookDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 isExpanded = !isExpanded;
                 elChapter.setExpanded(isExpanded, true);
+            }
+        });
+
+        btnUploadEbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TextbookDetailActivity.this, UploadEbookActivity.class);
+                intent.putExtra("textbookId", tid);
+                startActivity(intent);
             }
         });
     }

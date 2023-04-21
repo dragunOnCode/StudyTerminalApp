@@ -192,6 +192,14 @@
             </com.xuexiang.xui.widget.layout.ExpandableLayout>
 
 
+            <Button
+                android:id="@+id/btn_upload_ebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/el_chapter"
+                android:layout_marginVertical="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="上传电子版"/>
         </RelativeLayout>
     </ScrollView>
 

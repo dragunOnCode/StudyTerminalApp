@@ -24,6 +24,7 @@ public class Constants {
     public static final String CLASS_ALL_STUDENT = "/user-class/class/all";
     public static final String CLASS_RESOURCE = "/resource/class/all";
     public static final String RESOURCE = "/resource";
+    public static final String RESOURCE_CLASS_ALL = "/resource/class/all";
     public static final String USER_CLASS_BATCH_DELETE = "/user-class/batchDelete";
     public static final String USER_CLASS_BATCH_ADD = "/user-class/batchAdd";
     public static final String USER_SEARCH = "/user/searchStudent";
@@ -38,4 +39,9 @@ public class Constants {
     public static final String HOMEWORK_LIST = "/homework/list";
     public static final String AVAILABLE_HOMEWORK = "/homework/availableChapter";
     public static final String TEST = "/homework/test";
+    public static final String UPLOAD_TEST = "/testUpload";
+    public static final String UPLOAD_PDF = "/textbook/uploadPdf";
+    public static final String HOMEWORK_CLASS_SIMPLE = "/homework/allClass/simple";
+    public static final String HOMEWORK_QUESTION_LIST = "/chapter-question/visible_list/qid";
+    public static final String STUDENT_FINISHED_LIST = "/homework/student/completeQidList";
 }
