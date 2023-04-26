@@ -157,4 +157,23 @@ public class QuestionVo implements Serializable {
     public void setScore(Integer score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionVo{" +
+                "qid=" + qid +
+                ", questionType='" + questionType + '\'' +
+                ", questionContent='" + questionContent + '\'' +
+                ", questionSolution='" + questionSolution + '\'' +
+                ", questionDifficulty='" + questionDifficulty + '\'' +
+                ", questionAnalysis='" + questionAnalysis + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", choiceSelectionList=" + choiceSelectionList +
+                ", grade='" + grade + '\'' +
+                ", visible=" + visible +
+                ", keyword='" + keyword + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

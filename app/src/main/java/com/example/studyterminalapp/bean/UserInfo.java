@@ -20,8 +20,12 @@ public class UserInfo {
     /**
      * 身份 0学生 1教师 2管理员
      */
-
     private Integer role;
+
+    /**
+     * Sa-token value
+     */
+    private String tokenValue;
 
     public String getUsername() {
         return username;
@@ -45,5 +49,13 @@ public class UserInfo {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getTokenValue() {
+        return tokenValue;
+    }
+
+    public void setTokenValue(String tokenValue) {
+        this.tokenValue = tokenValue;
     }
 }

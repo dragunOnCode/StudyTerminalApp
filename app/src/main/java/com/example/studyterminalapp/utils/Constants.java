@@ -6,6 +6,7 @@ public class Constants {
     public static final String REQUEST_STUDENT_DATA = "/student_data.json";
     public static final String REQUEST_STUDENT_ORDER_DATA = "/student_order_data.json";
     public static final String REQUEST_STUDENT_CONTACT_DATA = "/student_contact_data.json";
+    public static final String USER = "/user";
     public static final String DO_LOGIN = "/user/login";
     public static final String DO_REGISTER = "/user/register";
     public static final String USER_CLASS_LIST = "/user-class/user";
@@ -44,4 +45,7 @@ public class Constants {
     public static final String HOMEWORK_CLASS_SIMPLE = "/homework/allClass/simple";
     public static final String HOMEWORK_QUESTION_LIST = "/chapter-question/visible_list/qid";
     public static final String STUDENT_FINISHED_LIST = "/homework/student/completeQidList";
+    public static final String USER_QUESTION = "/user-question";
+    public static final String INSERT_USER_QUESTION = "/user-question/insert";
+    public static final String HOMEWORK_SIMPLE_INFO = "/homework/simpleInfo";
 }

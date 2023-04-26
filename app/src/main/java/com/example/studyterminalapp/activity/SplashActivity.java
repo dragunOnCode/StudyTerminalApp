@@ -102,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
                                     return;
                                 }
                                 // 保存用户信息到SharedPreferences
-                                UserManage.getInstance().saveUserInfo(SplashActivity.this, username, password, loginRole);
+                                UserManage.getInstance().saveUserInfo(SplashActivity.this, username, password, loginRole, data.getTokenValue());
 
                                 Intent intent = new Intent(SplashActivity.this, cls);
                                 intent.putExtra("id", id);

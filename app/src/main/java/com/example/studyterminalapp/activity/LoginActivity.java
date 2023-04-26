@@ -174,8 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                                     return;
                                 }
                                 // 保存用户信息到SharedPreferences
-                                UserManage.getInstance().saveUserInfo(LoginActivity.this, username, password, loginRole);
-
+                                UserManage.getInstance().saveUserInfo(LoginActivity.this, username, password, loginRole, data.getTokenValue());
                                 Intent intent = new Intent(LoginActivity.this, cls);
                                 intent.putExtra("id", id);
                                 LoginActivity.this.startActivity(intent);

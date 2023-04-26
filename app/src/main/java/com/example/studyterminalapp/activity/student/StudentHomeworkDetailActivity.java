@@ -2,12 +2,14 @@ package com.example.studyterminalapp.activity.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.studyterminalapp.MyApp;
@@ -29,6 +31,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
 
 public class StudentHomeworkDetailActivity extends AppCompatActivity {
     private RelativeLayout rlTitleBar;
@@ -43,9 +47,12 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
     private List<QidAndStatusVo> completeQidList;
     // 该章节所有题目id列表
     private List<Integer> qidList;
+    // 该章节下某用户需要完成的题目的id列表
+    private ArrayList<Integer> availableQuestions;
     private DateTimeFormatter df;
     private boolean isDue;
     private Thread dataThread;
+    private boolean searchAllQid, searchCompleteQid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,9 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
 
         qidList = new ArrayList<>();
         completeQidList = new ArrayList<>();
+        availableQuestions = new ArrayList<>();
+        searchAllQid = false;
+        searchCompleteQid = false;
 
         tvHomeworkName = (TextView) findViewById(R.id.tv_homework_name);
         tvOpenDate = (TextView) findViewById(R.id.tv_open_date);
@@ -77,6 +87,7 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
         tvFinishedCount = (TextView) findViewById(R.id.tv_finished_count);
         tvQuestionCount = (TextView) findViewById(R.id.tv_question_count);
         btnDoHomework = (Button) findViewById(R.id.btn_do_homework);
+        btnDoHomework.setVisibility(View.INVISIBLE);
     }
 
     private void initListener() {
@@ -94,6 +105,10 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
                     ToastUtils.toast("作业不在开放时间内，无法作答");
                     return;
                 }
+                Intent intent = new Intent(StudentHomeworkDetailActivity.this, FinishHomeworkActivity.class);
+                intent.putIntegerArrayListExtra("availableQuestions", availableQuestions);
+                intent.putExtra("idx", 0);
+                startActivity(intent);
             }
         });
     }
@@ -120,33 +135,32 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
         getHomework();
         new Thread(()->{
             while (homework == null) {
-                if (homework != null) {
-                    break;
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             getAllQid();
             getCompleteQid();
         }).start();
-//        dataThread = new Thread(() -> {
-//            while (qidList.isEmpty() || completeQidList.isEmpty()) {
-//                if (!qidList.isEmpty() && !completeQidList.isEmpty()) {
-//                    break;
-//                }
-//            }
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    tvFinishedCount.setText(String.valueOf(completeQidList.size()));
-//                }
-//            });
-//        });
-//        dataThread.start();
+        new Thread(()->{
+            while (searchCompleteQid == false || searchAllQid == false) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            getAvailableQuestions();
+        }).start();
     }
 
     private void getHomework() {
-        String url = Constants.HOMEWORK + "/" + simpleHomework.getHid();
         try {
-            RequestManager.getInstance().GetRequest(new HashMap<>(), url, new RequestManager.ResultCallback() {
+            HashMap<String, Object> paramsMap = new HashMap<>();
+            paramsMap.put("hid", simpleHomework.getHid());
+            RequestManager.getInstance().GetRequest(paramsMap, Constants.HOMEWORK_SIMPLE_INFO, new RequestManager.ResultCallback() {
                 @Override
                 public void onResponse(String c, String json) {
                     Type dataType = new TypeToken<Result<Homework>>(){}.getType();
@@ -199,6 +213,7 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
                         case 200:
                             if (result.getData() != null) {
                                 qidList = result.getData();
+                                searchAllQid = true;
                             }
                             break;
                         default:
@@ -241,6 +256,7 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
                                     public void run() {
                                         completeQidList = result.getData();
                                         tvFinishedCount.setText(String.valueOf(completeQidList.size()));
+                                        searchCompleteQid = true;
                                     }
                                 });
                             }
@@ -264,5 +280,20 @@ public class StudentHomeworkDetailActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void getAvailableQuestions() {
+        List<Integer> completeQids = completeQidList.stream().map(QidAndStatusVo::getQid).collect(Collectors.toList());
+        availableQuestions.addAll(qidList);
+        availableQuestions.removeAll(completeQids);
+        Log.i("Chapter " + homework.getChapterId() + " Available", availableQuestions.toString());
+        runOnUiThread(()->{
+            if (availableQuestions == null || availableQuestions.isEmpty()) {
+                btnDoHomework.setVisibility(View.INVISIBLE);
+                btnDoHomework.setEnabled(false);
+            } else {
+                btnDoHomework.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }

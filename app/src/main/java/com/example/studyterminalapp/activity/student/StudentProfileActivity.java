@@ -19,6 +19,7 @@ import com.example.studyterminalapp.activity.LoginActivity;
 import com.example.studyterminalapp.activity.teacher.TeacherHomeActivity;
 import com.example.studyterminalapp.bean.HomeClassBean;
 import com.example.studyterminalapp.bean.Result;
+import com.example.studyterminalapp.bean.SaTokenInfo;
 import com.example.studyterminalapp.bean.StudentBean;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
@@ -172,35 +173,6 @@ public class StudentProfileActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder().url(Constants.WEB_SITE + Constants.REQUEST_STUDENT_DATA).build();
-//        Call call = client.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-//
-//            }
-//            @Override
-//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-//                String json = response.body().string();
-//                //Log.d("TEST", "JSON: " + json);
-//                student = JsonParse.getInstance().getStudent(json);
-//                if (student != null) {
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            tvStudentName.setText(student.getNickname());
-//                            tvUsername.setText(student.getUsername());
-//                            tvEmail.setText(student.getEmail());
-//                            tvStudentNumber.setText(student.getStudentNumber());
-//                            tvSchool.setText(student.getSchool());
-//                            Glide.with(StudentProfileActivity.this).load(student.getProfileImg())
-//                                    .error(R.mipmap.ic_launcher)
-//                                    .into(ivProfilePic);
-//                        }
-//                    });
-//                }
-//            }
-//        });
+
     }
 }

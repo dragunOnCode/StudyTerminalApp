@@ -106,7 +106,7 @@ public class HomeworkListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.toast(homework.getHomeworkName()+"被点击了");
+                //ToastUtils.toast(homework.getHomeworkName()+"被点击了");
                 Intent intent = new Intent(context, StudentHomeworkDetailActivity.class);
                 intent.putExtra("simpleHomework", homework);
                 context.startActivity(intent);
