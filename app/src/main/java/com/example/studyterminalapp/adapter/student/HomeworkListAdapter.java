@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 
 import com.example.studyterminalapp.R;
 import com.example.studyterminalapp.activity.student.ClassDetailActivity;
+import com.example.studyterminalapp.activity.student.StudentHomeworkDetail2Activity;
 import com.example.studyterminalapp.activity.student.StudentHomeworkDetailActivity;
 import com.example.studyterminalapp.adapter.teacher.ResourceListAdapter;
 import com.example.studyterminalapp.bean.Homework;
@@ -107,7 +108,7 @@ public class HomeworkListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 //ToastUtils.toast(homework.getHomeworkName()+"被点击了");
-                Intent intent = new Intent(context, StudentHomeworkDetailActivity.class);
+                Intent intent = new Intent(context, StudentHomeworkDetail2Activity.class);
                 intent.putExtra("simpleHomework", homework);
                 context.startActivity(intent);
 

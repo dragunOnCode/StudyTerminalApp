@@ -329,6 +329,7 @@ public class FinishHomeworkActivity extends AppCompatActivity implements OnFileP
         }
         Answer answer = new Answer();
         answer.setQid(question.getQid());
+        answer.setType(question.getQuestionType());
         switch (question.getQuestionType()) {
             case QuestionConstant.CHOICES:
                 String choice = selectPosition == -1 ? "" : ((char)('A' + selectPosition)) + "";

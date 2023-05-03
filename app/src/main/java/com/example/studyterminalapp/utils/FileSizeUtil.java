@@ -1,7 +1,12 @@
 package com.example.studyterminalapp.utils;
 
 
+import android.content.Context;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -176,5 +181,19 @@ public class FileSizeUtil {
                 break;
         }
         return fileSizeLong;
+    }
+
+    // 获取真实Uri
+    public static Uri getUriForFile(Context context, File file) {
+        if (context == null || file == null) {
+            throw new NullPointerException();
+        }
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= 24) {
+            uri = FileProvider.getUriForFile(context.getApplicationContext(), "com.choosecrop.fileprovider", file);
+        } else {
+            uri = Uri.fromFile(file);
+        }
+        return uri;
     }
 }

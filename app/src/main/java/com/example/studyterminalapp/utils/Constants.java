@@ -1,7 +1,8 @@
 package com.example.studyterminalapp.utils;
 
 public class Constants {
-    public static final String WEB_SITE = "http://172.21.219.80:8080";
+    //public static final String WEB_SITE = "http://172.21.219.80:8080";
+    public static final String WEB_SITE = "http://110.64.89.114:8080";
     public static final String REQUEST_HOME_CLASS_DATA = "/class_list_data.json";
     public static final String REQUEST_STUDENT_DATA = "/student_data.json";
     public static final String REQUEST_STUDENT_ORDER_DATA = "/student_order_data.json";
@@ -48,4 +49,8 @@ public class Constants {
     public static final String USER_QUESTION = "/user-question";
     public static final String INSERT_USER_QUESTION = "/user-question/insert";
     public static final String HOMEWORK_SIMPLE_INFO = "/homework/simpleInfo";
+    public static final String STUDENT_AVAILABLE_QUESTION = "/homework/student/available";
+    public static final String FINISHED_LIST = "/homework/student";
+    public static final String CORRECT = "/user-question/correct";
+    public static final String STUDENT_ANSWER = "/user-question/getChapterAnswer";
 }

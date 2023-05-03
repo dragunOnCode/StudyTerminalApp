@@ -10,12 +10,27 @@ android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 tools:context=".activity.ViewPagerActivity">
 
-<android.support.v4.view.ViewPager
-    android:id="@+id/viewpage"
-    android:layout_gravity="center"
-    android:layout_weight="1.0"
-    android:flipInterval="30"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:persistentDrawingCache="animation"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_gravity="center"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation">
+        <androidx.viewpager.widget.PagerTabStrip
+            android:id="@+id/pagertitle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+            android:textColor="#000000" />
+    </androidx.viewpager.widget.ViewPager>
+
+    <Button
+        android:id="@+id/btn_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewpage"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="提交作答"/>
 </RelativeLayout>

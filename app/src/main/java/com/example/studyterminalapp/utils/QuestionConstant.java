@@ -14,5 +14,11 @@ public class QuestionConstant {
 
     public static final Integer NO_ANSWER = 0;
 
+    public static final Integer NO_CORRECT = 3;
+
+    public static final Integer UNCORRECTED = 0;
+
+    public static final Integer CORRECTED = 1;
+
     public static final String CHOICES_SPLIT ="\0";
 }

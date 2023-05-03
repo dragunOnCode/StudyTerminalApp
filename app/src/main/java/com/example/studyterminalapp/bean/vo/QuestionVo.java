@@ -1,5 +1,8 @@
 package com.example.studyterminalapp.bean.vo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.util.List;
 
