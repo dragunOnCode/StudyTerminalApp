@@ -18,10 +18,13 @@ import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.vo.QidAndStatusVo;
 import com.example.studyterminalapp.bean.vo.QuestionVo;
 import com.example.studyterminalapp.bean.vo.SimpleHomeworkVo;
+import com.example.studyterminalapp.bean.vo.UserAnswerAndQuestionVo;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
+import com.example.studyterminalapp.utils.QuestionConstant;
 import com.example.studyterminalapp.utils.RequestManager;
 import com.google.gson.reflect.TypeToken;
+import com.xuexiang.xui.widget.button.RippleView;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.io.Serializable;
@@ -44,8 +47,10 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
     private TextView tvHomeworkName, tvOpenDate, tvDeadline, tvOpenDateStatus,
             tvFinishedCount, tvQuestionCount;
     private Button btnDoHomework;
+    private RippleView btnQuestionFeedback;
     // 该章节下某用户需要完成的题目的id列表
     private List<QuestionVo> availableQuestions;
+    private List<UserAnswerAndQuestionVo> answerAndQuestionList;
     private DateTimeFormatter df;
     private boolean isDue;
 
@@ -78,6 +83,8 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
         tvQuestionCount = (TextView) findViewById(R.id.tv_question_count);
         btnDoHomework = (Button) findViewById(R.id.btn_do_homework);
         btnDoHomework.setVisibility(View.INVISIBLE);
+        btnQuestionFeedback = (RippleView) findViewById(R.id.btn_question_feedback);
+        btnQuestionFeedback.setVisibility(View.INVISIBLE);
     }
 
     private void initListener() {
@@ -131,6 +138,17 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
                 }
             }
             getAvailableQuestions();
+        }).start();
+
+        new Thread(()->{
+            while (homework == null) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            getStudentAnswer();
         }).start();
     }
 
@@ -227,6 +245,61 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
                 @Override
                 public void onError(String msg) {
                     Log.i("Student Homework Detail", msg);
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getStudentAnswer() {
+        try {
+            HashMap<String, Object> paramsMap = new HashMap<>();
+            paramsMap.put("userId", MyApp.getId());
+            paramsMap.put("chapterId", homework.getChapterId());
+            RequestManager.getInstance().GetRequest(paramsMap, Constants.STUDENT_ANSWER, new RequestManager.ResultCallback() {
+                @Override
+                public void onResponse(String c, String json) {
+                    Type dataType = new TypeToken<Result<List<UserAnswerAndQuestionVo>>>(){}.getType();
+                    Result<List<UserAnswerAndQuestionVo>> result = JsonParse.getInstance().getResult(json, dataType);
+                    Integer code = result.getStatus();
+                    switch (code) {
+                        case 200:
+                            if (result.getData() != null) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //answerAndQuestionList = result.getData().stream().filter(i -> i.getCorrectStatus().equals(QuestionConstant.CORRECTED)).collect(Collectors.toList());
+                                        answerAndQuestionList = result.getData();
+                                        if (!answerAndQuestionList.isEmpty()) {
+                                            btnQuestionFeedback.setVisibility(View.VISIBLE);
+                                            btnQuestionFeedback.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    Intent intent = new Intent(StudentHomeworkDetail2Activity.this, FeedbackQuestionActivity.class);
+                                                    intent.putExtra("answerAndQuestionList", (Serializable) answerAndQuestionList);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                            break;
+                        default:
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtils.toast("查询学生作答情况异常-1");
+                                }
+                            });
+                            break;
+                    }
+                }
+
+                @Override
+                public void onError(String msg) {
+                    Log.i("Intermediate", msg);
                 }
             });
         } catch (UnsupportedEncodingException e) {

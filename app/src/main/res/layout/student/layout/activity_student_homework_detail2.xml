@@ -119,6 +119,27 @@
                 android:layout_marginTop="20dp"
                 android:text="开始作答" />
 
+            <com.xuexiang.xui.widget.button.RippleView
+                android:id="@+id/btn_question_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btn_do_homework"
+                app:rv_type="simpleRipple"
+                android:layout_marginVertical="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@color/honeydew_orange"
+                    android:gravity="center"
+                    android:text="错题集"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+            </com.xuexiang.xui.widget.button.RippleView>
+
         </RelativeLayout>
 
     </ScrollView>
