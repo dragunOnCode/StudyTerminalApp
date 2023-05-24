@@ -125,4 +125,5 @@ dependencies {
     // 文件选择
     implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.11'
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

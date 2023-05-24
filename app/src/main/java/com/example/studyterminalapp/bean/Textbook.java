@@ -85,17 +85,17 @@ public class Textbook implements Serializable {
      */
     private String publishDate;
 
+    private String coverUrl;
+
 
     public Textbook() {
     }
 
-    public Textbook(Integer tid, String textbookName, String updateDate, String textbookPic,
-                    String contentUrl, String courseName, Float textbookPrice,
-                    String textbookDescription, String grade, String pressName, String bookSn,
-                    Integer discountRate, Float discountPrice, Integer stock, String keyword,
-                    Integer saleCount, LocalDateTime promotionStartTime,
-                    LocalDateTime promotionEndTime, String textbookAuthor,
-                    Integer visible, String publishDate) {
+    public Textbook(Integer tid, String textbookName, String updateDate, String textbookPic, String contentUrl,
+                    String courseName, Float textbookPrice, String textbookDescription, String grade,
+                    String pressName, String bookSn, Integer discountRate, Float discountPrice, Integer stock,
+                    String keyword, Integer saleCount, LocalDateTime promotionStartTime, LocalDateTime promotionEndTime,
+                    String textbookAuthor, Integer visible, String publishDate, String coverUrl) {
         this.tid = tid;
         this.textbookName = textbookName;
         this.updateDate = updateDate;
@@ -117,6 +117,7 @@ public class Textbook implements Serializable {
         this.textbookAuthor = textbookAuthor;
         this.visible = visible;
         this.publishDate = publishDate;
+        this.coverUrl = coverUrl;
     }
 
     public String getBookSn() {
@@ -287,9 +288,17 @@ public class Textbook implements Serializable {
         this.textbookPic = textbookPic;
     }
 
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
+    }
+
     @Override
     public String toString() {
-        return "HomeTextbookVo{" +
+        return "Textbook{" +
                 "tid=" + tid +
                 ", textbookName='" + textbookName + '\'' +
                 ", updateDate='" + updateDate + '\'' +
@@ -300,7 +309,18 @@ public class Textbook implements Serializable {
                 ", textbookDescription='" + textbookDescription + '\'' +
                 ", grade='" + grade + '\'' +
                 ", pressName='" + pressName + '\'' +
+                ", bookSn='" + bookSn + '\'' +
+                ", discountRate=" + discountRate +
+                ", discountPrice=" + discountPrice +
+                ", stock=" + stock +
+                ", keyword='" + keyword + '\'' +
+                ", saleCount=" + saleCount +
+                ", promotionStartTime=" + promotionStartTime +
+                ", promotionEndTime=" + promotionEndTime +
                 ", textbookAuthor='" + textbookAuthor + '\'' +
+                ", visible=" + visible +
+                ", publishDate='" + publishDate + '\'' +
+                ", coverUrl='" + coverUrl + '\'' +
                 '}';
     }
 }

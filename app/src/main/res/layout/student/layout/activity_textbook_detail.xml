@@ -25,7 +25,8 @@
             <ImageView
                 android:id="@+id/iv_textbook_pic"
                 android:layout_width="120dp"
-                android:layout_height="160dp" />
+                android:layout_height="160dp"
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tv_textbook_name"

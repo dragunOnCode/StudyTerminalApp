@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.studyterminalapp.R;
+import com.example.studyterminalapp.activity.teacher.TeacherClassDetailActivity;
 import com.example.studyterminalapp.adapter.admin.ChapterListAdapter;
 import com.example.studyterminalapp.bean.ChapterBean;
 import com.example.studyterminalapp.bean.Result;
@@ -41,6 +43,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
             tvPublishDate, tvTextbookDescription;
     private boolean isExpanded;
     private ExpandableLayout elChapter;
+    private ImageView ivTextbookPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class TextbookDetailActivity extends AppCompatActivity {
         btnAddChapter = (Button) findViewById(R.id.btn_add_chapter);
         btnExpandChapter = (Button) findViewById(R.id.btn_expand_chapter);
         btnUploadEbook = (Button) findViewById(R.id.btn_upload_ebook);
+        ivTextbookPic = (ImageView) findViewById(R.id.iv_textbook_pic);
 
         tvTitle.setText(textbook.getTextbookName());
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +138,12 @@ public class TextbookDetailActivity extends AppCompatActivity {
         tvGrade.setText(textbook.getGrade());
         tvPublishDate.setText(textbook.getPublishDate());
         tvTextbookDescription.setText(textbook.getTextbookDescription());
+        if (textbook.getCoverUrl() != null) {
+            Glide.with(TextbookDetailActivity.this)
+                    .load(textbook.getCoverUrl())
+                    .error(R.mipmap.ic_launcher)
+                    .into(ivTextbookPic);
+        }
 
         HashMap<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("tid", tid);

@@ -9,23 +9,22 @@
 
     <include layout="@layout/title_bar" />
 
-    <ImageView
-        android:id="@+id/iv_banner"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/book_pic" />
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_banner"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/book_pic" />-->
 
 
     <RelativeLayout
         android:id="@+id/rl_main_search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_banner"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="70dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -35,7 +34,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginRight="20dp"
             android:enabled="true"
-            app:ms_entries="@array/search_type" />
+            app:ms_entries="@array/search_type2" />
 
         <EditText
             android:id="@+id/et_search_content"
@@ -66,31 +65,54 @@
         android:text="我的课程"
         android:textSize="20sp"></TextView>
 
-    <ScrollView
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/tv_my_course"-->
+<!--        android:layout_marginBottom="65dp"-->
+<!--        android:background="#fcf0c0"-->
+<!--        android:scrollbars="none">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <com.example.studyterminalapp.views.ClassListView-->
+<!--                android:id="@+id/clv_list"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginRight="8dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:dividerHeight="8dp"-->
+<!--                android:scrollbars="none" />-->
+
+<!--            -->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/tv_my_course"
         android:layout_marginBottom="65dp"
-        android:background="#fcf0c0"
-        android:scrollbars="none">
-
-        <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+        <com.scwang.smart.refresh.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.example.studyterminalapp.views.ClassListView
-                android:id="@+id/clv_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:dividerHeight="8dp"
-                android:scrollbars="none" />
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     <include android:id="@+id/bottom_bar" layout="@layout/bottom_bar" />
 

@@ -104,6 +104,7 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(StudentHomeworkDetail2Activity.this, FinishQuestionActivity.class);
                 intent.putExtra("questionList", (Serializable) availableQuestions);
+                intent.putExtra("simpleHomework", (SimpleHomeworkVo) simpleHomework);
                 startActivity(intent);
             }
         });
@@ -271,7 +272,8 @@ public class StudentHomeworkDetail2Activity extends AppCompatActivity {
                                     public void run() {
                                         //answerAndQuestionList = result.getData().stream().filter(i -> i.getCorrectStatus().equals(QuestionConstant.CORRECTED)).collect(Collectors.toList());
                                         answerAndQuestionList = result.getData();
-                                        if (!answerAndQuestionList.isEmpty()) {
+                                        if (!answerAndQuestionList.isEmpty()
+                                                && LocalDateTime.now().isAfter(simpleHomework.getDeadline())) {
                                             btnQuestionFeedback.setVisibility(View.VISIBLE);
                                             btnQuestionFeedback.setOnClickListener(new View.OnClickListener() {
                                                 @Override

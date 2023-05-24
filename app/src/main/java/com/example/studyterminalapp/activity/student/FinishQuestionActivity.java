@@ -20,15 +20,24 @@ import com.example.studyterminalapp.R;
 import com.example.studyterminalapp.adapter.MyFragmentAdapter;
 import com.example.studyterminalapp.bean.Answer;
 import com.example.studyterminalapp.bean.Question;
+import com.example.studyterminalapp.bean.Resource;
+import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.vo.QuestionVo;
+import com.example.studyterminalapp.bean.vo.SimpleHomeworkVo;
 import com.example.studyterminalapp.fragment.QuestionFragment;
 import com.example.studyterminalapp.utils.ActivityCollector;
 import com.example.studyterminalapp.utils.Constants;
+import com.example.studyterminalapp.utils.JsonParse;
 import com.example.studyterminalapp.utils.QuestionConstant;
+import com.example.studyterminalapp.utils.RequestManager;
+import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xutil.tip.ToastUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +62,7 @@ public class FinishQuestionActivity extends AppCompatActivity {
     private Context context;
     private Thread thread;
     private int progress;
+    private SimpleHomeworkVo simpleHomework;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +75,7 @@ public class FinishQuestionActivity extends AppCompatActivity {
         // 接收：
         // ArrayList list =  (List<Object>) getIntent().getSerialzableExtra(list);
         questionList = (List<QuestionVo>) getIntent().getSerializableExtra("questionList");
+        simpleHomework = (SimpleHomeworkVo) getIntent().getSerializableExtra("simpleHomework");
         context = this;
 
         //Log.i("QList", questionList.toString());
@@ -181,7 +192,7 @@ public class FinishQuestionActivity extends AppCompatActivity {
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         for (int i = 0; i < questionList.size(); i++) {
 
-                            if (!answerMap.containsKey(questionList.get(i).getQid())) {
+                            if (!answerMap.containsKey(i)) {
                                 Answer answer = new Answer();
                                 answer.setQid(questionList.get(i).getQid());
                                 answer.setType(questionList.get(i).getQuestionType());
@@ -239,6 +250,50 @@ public class FinishQuestionActivity extends AppCompatActivity {
                                             });
                                 }
                             }).start();
+                        }
+
+                        // 更新教师端状态
+                        HashMap<String, Object> paramsMap = new HashMap<>();
+                        paramsMap.put("hid", simpleHomework.getHid());
+                        try {
+                            RequestManager.getInstance().GetRequest(paramsMap, Constants.UPDATE_FINISHED,
+                                    new RequestManager.ResultCallback() {
+                                @Override
+                                public void onResponse(String c, String json) {
+
+                                    //Log.d("TEST", "JSON: " + json);
+                                    Type dataType = new TypeToken<Result<List<Resource>>>(){}.getType();
+                                    Result<List<Resource>> result = JsonParse.getInstance().getResult(json, dataType);
+                                    Integer code = result.getStatus();
+                                    switch (code) {
+                                        case 200:
+                                            if (result.getData() != null && !result.getData().isEmpty()) {
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Log.i("Update Finished Progress", "更新成功");
+                                                    }
+                                                });
+                                            }
+                                            break;
+                                        default:
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Log.e("Update Finished Progress", "更新异常");
+                                                }
+                                            });
+                                            break;
+                                    }
+                                }
+
+                                @Override
+                                public void onError(String msg) {
+                                    Log.i("Student Class Resource", msg);
+                                }
+                            });
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
                         }
 
                         new MaterialDialog.Builder(context)

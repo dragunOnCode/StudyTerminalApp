@@ -118,9 +118,9 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
         tvTextbookName = (TextView) findViewById(R.id.tv_textbook_name);
         tvTextbookAuthor = (TextView) findViewById(R.id.tv_textbook_author);
         tvPressName = (TextView) findViewById(R.id.tv_press_name);
-        tvCourseName = (TextView) findViewById(R.id.tv_course_name);
-        tvGrade = (TextView) findViewById(R.id.tv_grade);
         bookItem = (RelativeLayout) findViewById(R.id.book_item);
+        tvCourseName = (TextView) bookItem.findViewById(R.id.tv_course_name);
+        tvGrade = (TextView) bookItem.findViewById(R.id.tv_grade);
 
         btnAddResource = (Button) findViewById(R.id.btn_add_resource);
     }
@@ -378,10 +378,12 @@ public class TeacherClassDetailActivity extends AppCompatActivity {
                                 tvPressName.setText(textbook.getPressName());
                                 tvCourseName.setText(textbook.getCourseName());
                                 tvGrade.setText(textbook.getGrade());
-                                Glide.with(TeacherClassDetailActivity.this)
-                                        .load(textbook.getTextbookPic())
-                                        .error(R.mipmap.ic_launcher)
-                                        .into(ivTextbookPic);
+                                if (textbook.getCoverUrl() != null) {
+                                    Glide.with(TeacherClassDetailActivity.this)
+                                            .load(textbook.getCoverUrl())
+                                            .error(R.mipmap.ic_launcher)
+                                            .into(ivTextbookPic);
+                                }
                             }
                         });
                     }

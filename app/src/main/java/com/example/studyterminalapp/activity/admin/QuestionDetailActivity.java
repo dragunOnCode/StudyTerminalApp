@@ -117,7 +117,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
         btnUploadImg = (Button) findViewById(R.id.btn_upload_img);
         btnConfirm = (RippleView) findViewById(R.id.btn_confirm);
 
-        tvTitle.setText("新增题目");
+        tvTitle.setText("题目管理");
 
         msCourseName.setText(question.getCourseName());
         msGrade.setText(question.getGrade());
@@ -143,13 +143,13 @@ public class QuestionDetailActivity extends AppCompatActivity {
             }
         });
 
-        ivImgUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bitmap bitmap = ((BitmapDrawable) ivImgUrl.getDrawable()).getBitmap();
-                bigImageLoader(bitmap);
-            }
-        });
+//        ivImgUrl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Bitmap bitmap = ((BitmapDrawable) ivImgUrl.getDrawable()).getBitmap();
+//                bigImageLoader(bitmap);
+//            }
+//        });
 
         //btnUploadImg.setOnClickListener(this);
         btnSelectImg.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +196,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
                     List<String> choices= Stream.of(c).collect(Collectors.toList());
                     paramsMap.put("choiceSelectionList", choices);
                 }
-                /*
+
                 try {
                     RequestManager.getInstance().PutRequest(paramsMap, Constants.QUESTION,
                             new RequestManager.ResultCallback() {
@@ -221,7 +221,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                 */
+
             }
         });
     }

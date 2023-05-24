@@ -54,4 +54,5 @@ public class Constants {
     public static final String CORRECT = "/user-question/correct";
     public static final String STUDENT_ANSWER = "/user-question/getChapterAnswer";
     public static final String FEEDBACK_ANSWER = "/user-question/feedback/android";
+    public static final String UPDATE_FINISHED = "/homework/updateFinishedCount";
 }

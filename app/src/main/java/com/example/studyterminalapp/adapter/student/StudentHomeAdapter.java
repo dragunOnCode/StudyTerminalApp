@@ -62,7 +62,7 @@ public class StudentHomeAdapter extends BaseAdapter {
             viewHolder.tvGrade  = view.findViewById(R.id.tv_grade);
             viewHolder.tvSubject = view.findViewById(R.id.tv_subject);
             viewHolder.tvStudentNum  = view.findViewById(R.id.tv_student_num);
-            viewHolder.ivClassPic  = view.findViewById(R.id.iv_class_pic);
+            //viewHolder.ivClassPic  = view.findViewById(R.id.iv_class_pic);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -75,10 +75,10 @@ public class StudentHomeAdapter extends BaseAdapter {
             viewHolder.tvGrade.setText(homeClassBean.getGrade());
             viewHolder.tvSchool.setText(homeClassBean.getSchoolName());
             viewHolder.tvStudentNum.setText("");
-            Glide.with(context)
-                    .load(homeClassBean.getClassPic())
-                    .error(R.mipmap.ic_launcher)
-                    .into(viewHolder.ivClassPic);
+//            Glide.with(context)
+//                    .load(homeClassBean.getClassPic())
+//                    .error(R.mipmap.ic_launcher)
+//                    .into(viewHolder.ivClassPic);
         }
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +94,6 @@ public class StudentHomeAdapter extends BaseAdapter {
 
     class ViewHolder{
         public TextView tvClassName, tvSchool, tvSubject, tvGrade, tvStudentNum;
-        public ImageView ivClassPic;
+        //public ImageView ivClassPic;
     }
 }

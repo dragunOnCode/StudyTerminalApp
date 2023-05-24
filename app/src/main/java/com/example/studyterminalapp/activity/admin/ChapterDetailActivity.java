@@ -18,6 +18,7 @@ import com.example.studyterminalapp.adapter.admin.ChapterQuestionAdapter;
 import com.example.studyterminalapp.bean.ChapterBean;
 import com.example.studyterminalapp.bean.Result;
 import com.example.studyterminalapp.bean.vo.ChapterQuestionVo;
+import com.example.studyterminalapp.bean.vo.PageInfo;
 import com.example.studyterminalapp.utils.Constants;
 import com.example.studyterminalapp.utils.JsonParse;
 import com.example.studyterminalapp.utils.RequestManager;
@@ -193,24 +194,25 @@ public class ChapterDetailActivity extends AppCompatActivity {
 
         HashMap<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("cid", chapter.getCid());
+        paramsMap.put("pageSize", 1000);
         try {
             RequestManager.getInstance().GetRequest(paramsMap, Constants.CHAPTER_QUESTION_LIST,
                     new RequestManager.ResultCallback() {
                         @Override
                         public void onResponse(String code, String json) {
 
-                            //Log.d("TEST", "JSON: " + json);
-                            Type dataType = new TypeToken<Result<List<ChapterQuestionVo>>>(){}.getType();
-                            Result<List<ChapterQuestionVo>> result = JsonParse.getInstance().getResult(json, dataType);
-                            List<ChapterQuestionVo> data = result.getData();
-                            Log.i("Chapter Question List", data.toString());
-                            if (data == null || data.isEmpty()) {
+                            //Log.d("Chapter Detail", "JSON: " + json);
+                            Type dataType = new TypeToken<Result<PageInfo<ChapterQuestionVo>>>(){}.getType();
+                            Result<PageInfo<ChapterQuestionVo>> result = JsonParse.getInstance().getPageInfoResult(json, dataType);
+                            PageInfo<ChapterQuestionVo> data = result.getData();
+                            //Log.i("Chapter Question List", data.toString());
+                            if (data == null || data.getList() == null || data.getList().isEmpty()) {
                                 return;
                             }
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    chapterQuestionAdapter.setData(data);
+                                    chapterQuestionAdapter.setData(data.getList());
                                 }
                             });
                         }
